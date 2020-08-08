@@ -1,0 +1,22 @@
+{
+    "name": [
+        "Apple",
+        "Tesla"
+    ],
+    "symbol": [
+        "AAPL",
+        "TSLA"
+    ],
+    "current": [
+        "440.45",
+        "1565.25"
+    ],
+    "invested": [
+        "100",
+        "50"
+    ],
+    "pctChanged": [
+        "10%",
+        "5%"
+    ]
+}
