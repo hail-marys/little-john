@@ -1,5 +1,6 @@
 import finnhub
 from little_john.broker import Broker
+import sys
 
 finnhub_client = finnhub.Client(api_key="brqm9efrh5rce3ls8mdg")
 
@@ -16,7 +17,7 @@ class ManualTrade():
     def __init__(self):
         self.client = finnhub.Client(api_key="brqm9efrh5rce3ls8mdg")
         self.company = None
-        self.buy = None
+        self.buy_or_trade = None
         self.amount = None
 
     def check(self, sym):
@@ -29,19 +30,26 @@ class ManualTrade():
             self.process_company(data)
 
     def menu(self):
-        company = input('Which Company? Enter symbol:\n')
-        company.upper()
+        company = input('Which Company? Enter symbol:\n').upper()
         self.check(company)
 
-        buy = input('Buy or Short?\n')
-        print(buy)
-
+        entry = input('Buy or Short?\n').lower()
+        self.buy(entry)
         # amount = input('How much?\n')
 
         # Confirm = input('Confirm? Enter yes or no\n')
 
     def process_company(self, comp):
         self.company = comp['name']
+
+    def buy(self, decsion):
+        decsion.lower()
+        if decsion == 'buy' or decsion == 'short':
+            self.buy_or_trade = decsion
+        else:
+            print('Invalid input')
+            entry = input('Buy or Short?\n').lower()
+            self.buy(entry)
 
 
 trade = ManualTrade()
