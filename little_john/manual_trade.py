@@ -3,7 +3,7 @@ from little_john.broker import Broker
 
 finnhub_client = finnhub.Client(api_key="brqm9efrh5rce3ls8mdg")
 
-# print(finnhub_client.company_profile(symbol='AAPL'))
+# print(finnhub_client.company_profile(symbol='fdsfae'))
 
 
 class ManualTrade():
@@ -21,7 +21,8 @@ class ManualTrade():
 
     def check(self, sym):
         data = finnhub_client.company_profile(symbol=sym)
-        if data == None:
+
+        if data == {}:
             print('That was the wrong input')
             return self.menu()
         else:
@@ -32,7 +33,8 @@ class ManualTrade():
         company.upper()
         self.check(company)
 
-        # buy = input('Buy or Short?\n')
+        buy = input('Buy or Short?\n')
+        print(buy)
 
         # amount = input('How much?\n')
 

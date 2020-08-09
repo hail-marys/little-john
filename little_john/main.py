@@ -28,7 +28,7 @@ def start():
         if ipt == 'quit':
             sys.exit('thanks for using the app')
         elif ipt == '1':
-            view = viewTrades('little_john/trades.json')
+            view = viewTrades('logs/trades.json')
             view.display()
         elif ipt == '2':
             # search_stocks.menu()
