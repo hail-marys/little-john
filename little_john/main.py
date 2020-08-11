@@ -1,5 +1,6 @@
 import sys
-from little_john.view_trades import viewTrades
+from little_john.view_trades import View_trades
+from little_john.manual_trade import Manual_trade
 import json
 """
 >> python Little_John/main.py
@@ -28,14 +29,15 @@ def start():
         if ipt == 'quit':
             sys.exit('thanks for using the app')
         elif ipt == '1':
-            view = viewTrades('little_john/trades.json')
+            view = View_trades('logs/trades.json')
             view.display()
         elif ipt == '2':
             # search_stocks.menu()
             True
         elif ipt == '3':
-            # make_trade.menu()
-            True
+            trades = Manual_trade()
+            trades.menu()
+
         elif ipt == '4':
             # autobot.toggle()
             True
