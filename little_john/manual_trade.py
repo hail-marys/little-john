@@ -61,6 +61,7 @@ class Manual_trade():
         self.amount = amt
 
     def confirmation(self, entry):
+        # TODO: can't enter duplicate values
         import json
         shares = int(self.amount) / int(self.current)
 

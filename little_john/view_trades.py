@@ -23,6 +23,6 @@ class View_trades:
         for i in self.data:
             print(f'\nName: {self.data[i]["name"]}')
             print(f'Symbol: {self.data[i]["symbol"]}')
-            print(f'Current: {self.data[i]["current"]}')
+            print(f'Current: {self.data[i]["currentAtPurchase"]}')
             print(f'Invested: {self.data[i]["invested"]}')
-            print(f'Change: {self.data[i]["pctChanged"]}\n')
+            print(f'Change: {self.data[i]["shares"]}\n')
