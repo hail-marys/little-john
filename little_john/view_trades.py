@@ -1,7 +1,7 @@
 import json
 
 
-class viewTrades:
+class View_trades:
     """
     This shows all your trades
     """
