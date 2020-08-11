@@ -2,7 +2,7 @@ import finnhub
 from little_john.broker import Broker
 import sys
 
-finnhub_client = finnhub.Client(api_key="brqm9efrh5rce3ls8mdg")
+# finnhub_client = finnhub.Client(api_key="brqm9efrh5rce3ls8mdg")
 
 # print(finnhub_client.company_profile(symbol='fdsfae'))
 
@@ -20,15 +20,15 @@ class Manual_trade():
         self.company = None
         self.buy_or_trade = None
         self.amount = None
+        self.current = None
 
     def check(self, sym):
-        data = finnhub_client.company_profile(symbol=sym)
-        print(data)
-
+        data = self.client.company_profile(symbol=sym)
         if data == {}:
             print('That was the wrong input')
             return self.menu()
         else:
+            self.current = self.client.quote(sym)['c']
             self.process_company(data)
 
     def menu(self):
@@ -61,13 +61,16 @@ class Manual_trade():
         self.amount = amt
 
     def confirmation(self, entry):
+        # TODO: fix current with the current
         import json
+        shares = int(self.amount) / int(self.current)
+
         new_data = {self.symbol: {
             "name": self.company,
             "symbol": self.symbol,
-            "current": "something",
+            "current": self.current,
             "invested": self.amount,
-            "pctChanged": "percentage"
+            "shares": shares
         }
         }
         entry.lower()
@@ -84,11 +87,3 @@ class Manual_trade():
             print('Invalid input')
             confirm = input('Confirm? Enter yes or no\n')
             self.confirmation(confirm)
-
-
-# trade = Manual_trade()
-
-# trade.check('TSLA')
-
-# trade.menu()
-# print(trade.company)

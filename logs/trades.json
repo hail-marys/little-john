@@ -2,22 +2,8 @@
     "TSLA": {
         "name": "Tesla Inc",
         "symbol": "TSLA",
-        "current": "something",
-        "invested": "450",
-        "pctChanged": "percentage"
-    },
-    "AAPL": {
-        "name": "Apple Inc",
-        "symbol": "AAPL",
-        "current": "something",
-        "invested": "500",
-        "pctChanged": "percentage"
-    },
-    "AMZN": {
-        "name": "Amazon.com Inc",
-        "symbol": "AMZN",
-        "current": "something",
-        "invested": "1600",
-        "pctChanged": "percentage"
+        "current": 1418.57,
+        "invested": "2000",
+        "shares": 1.4104372355430184
     }
 }
