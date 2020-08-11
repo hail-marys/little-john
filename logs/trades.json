@@ -1,22 +1,23 @@
 {
-    "name": [
-        "Apple",
-        "Tesla"
-    ],
-    "symbol": [
-        "AAPL",
-        "TSLA"
-    ],
-    "current": [
-        "440.45",
-        "1565.25"
-    ],
-    "invested": [
-        "100",
-        "50"
-    ],
-    "pctChanged": [
-        "10%",
-        "5%"
-    ]
+    "TSLA": {
+        "name": "Tesla Inc",
+        "symbol": "TSLA",
+        "current": "something",
+        "invested": "450",
+        "pctChanged": "percentage"
+    },
+    "AAPL": {
+        "name": "Apple Inc",
+        "symbol": "AAPL",
+        "current": "something",
+        "invested": "500",
+        "pctChanged": "percentage"
+    },
+    "AMZN": {
+        "name": "Amazon.com Inc",
+        "symbol": "AMZN",
+        "current": "something",
+        "invested": "1600",
+        "pctChanged": "percentage"
+    }
 }

@@ -35,9 +35,9 @@ def start():
             # search_stocks.menu()
             True
         elif ipt == '3':
-            trades = Manual_trade()
-            trades.menu()
-
+            trade = Manual_trade()
+            trade.menu()
+            print(trade.company)
         elif ipt == '4':
             # autobot.toggle()
             True
