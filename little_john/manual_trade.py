@@ -61,14 +61,13 @@ class Manual_trade():
         self.amount = amt
 
     def confirmation(self, entry):
-        # TODO: fix current with the current
         import json
         shares = int(self.amount) / int(self.current)
 
         new_data = {self.symbol: {
             "name": self.company,
             "symbol": self.symbol,
-            "current": self.current,
+            "currentAtPurchase": self.current,
             "invested": self.amount,
             "shares": shares
         }
