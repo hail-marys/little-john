@@ -7,7 +7,7 @@ finnhub_client = finnhub.Client(api_key="brqm9efrh5rce3ls8mdg")
 # print(finnhub_client.company_profile(symbol='fdsfae'))
 
 
-class ManualTrade():
+class Manual_trade():
     """
     Manual trade class that has methods for handling trades
     """
@@ -35,6 +35,7 @@ class ManualTrade():
 
         entry = input('Buy or Short?\n').lower()
         self.buy(entry)
+
         # amount = input('How much?\n')
 
         # Confirm = input('Confirm? Enter yes or no\n')
@@ -52,7 +53,7 @@ class ManualTrade():
             self.buy(entry)
 
 
-trade = ManualTrade()
+# trade = ManualTrade()
 
-trade.menu()
-print(trade.company)
+# trade.menu()
+# print(trade.company)
