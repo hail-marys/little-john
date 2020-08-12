@@ -39,43 +39,61 @@ class SearchStocks:
     def current_stock_price(self, symbol):
         """Gets current stock price"""
         current = self.client.quote(symbol)['c']
-        # print(self.client.quote(symbol))
         print(f'Current Stock Value: {current}')
     
 
     def open_stock_price(self, symbol):
         """Gets stock price at open"""
         open = self.client.quote(symbol)['o']
-        # print(self.client.quote(symbol))
         print(f'Open: {open}')
 
 
     def high_stock_price(self, symbol):
         """Gets highest stock price of the day"""
         high = self.client.quote(symbol)['h']
-        # print(self.client.quote(symbol))
         print(f'High: {high}')
 
 
     def low_stock_price(self, symbol):
         """Gets lowest stock price"""
         low = self.client.quote(symbol)['l']
-        # print(self.client.quote(symbol))
         print(f'Low: {low}')
 
 
     def market_cap(self, symbol):
         """Gets market cap for company"""
         cap = self.client.company_profile(symbol=symbol)['marketCapitalization']
-        # print(self.client.company_profile(symbol))
         print(f'Market Capitalization: {cap}')
 
-# print(finnhub_client.company_basic_financials('AAPL', 'margin'))
-    def basic_financials(self, symbol):
-        """Gets basic financials such as margin, P/E ratio, 52-week high/low"""
-        basic = self.client.company_basic_financials(symbol, 'metric')
-        # print(self.client.company_profile(symbol))
-        print(f'Basic Financials: {basic}')
+
+    def week_high(self, symbol):
+        """Gets 52-week high"""
+        high = self.client.company_basic_financials(symbol, 'all')['metric']['52WeekHigh']
+        print(f'52 week high: {high}')
+
+
+    def week_low(self, symbol):
+        """Gets 52-week low"""
+        low = self.client.company_basic_financials(symbol, 'all')['metric']['52WeekLow']
+        print(f'52 week low: {low}')
+
+
+    def pe_ration(self, symbol):
+        """Get P/E ratio trailing twelve months"""
+        ratio = self.client.company_basic_financials(symbol, 'all')['metric']['pfcfShareTTM']
+        print(f'P/E ratio: {ratio}')
+
+
+    def div_yield(self, symbol):
+        """Get annual div yield"""
+        div = self.client.company_basic_financials(symbol, 'all')['metric']['dividendYieldIndicatedAnnual']
+        print(f'DIV yield: {div}')
+
+    
+    def candle(self, symbol):
+        """Candle stick data for bot, pulled data from each day between 8/12/2019 1pm - 8/12/2020 1pm"""
+        candle = self.client.stock_candles(symbol, 'D', 1565640000, 1597262400)
+        # print(f'{candle}')
 
 
 
@@ -85,4 +103,9 @@ search.open_stock_price('AAPL')
 search.high_stock_price('AAPL')
 search.low_stock_price('AAPL')
 search.market_cap('AAPL')
-search.basic_financials('AMZN')
+search.week_high('AAPL')
+search.week_low('AAPL')
+search.pe_ration('AAPL')
+search.div_yield('AAPL')
+"""For bot function"""
+# search.candle('AAPL') 
