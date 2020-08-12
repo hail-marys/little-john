@@ -1,5 +1,15 @@
+# have main impot add_to_target_list
+# import os, sys
+# currentdir = os.path.dirname(os.path.realpath(__file__))
+# parentdir = os.path.dirname(currentdir)
+# sys.path.append(parentdir)
+
 import json
-# from . import main as Main
+# from little_john.main import start
+
+import finnhub
+finnhub_client = finnhub.Client(api_key="brqm9efrh5rce3ls8mdg")
+
 
 def sub_menu():
     print("""
@@ -70,8 +80,8 @@ Would you like to:
             sub_menu()
 
     if int(choice) == 6:
+        # this way when main.py calls sub_menu(), it can return to the main menu
         return
-        # main.start()
 
 
 def add_company_to_targeted_companies(company):
@@ -116,8 +126,11 @@ def remove_company_from_targeted_companies(company):
 
 
 def is_real_company(ticker):
-    with open('../user_data/sp500_companies.json', 'r') as file:
-        return ticker in json.load(file)
+    data = finnhub_client.company_profile(symbol=ticker)
+    if data == {}:
+        return False
+    else:
+        return True
 
 
 def is_unique(ticket):
