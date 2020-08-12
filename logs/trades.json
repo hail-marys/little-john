@@ -1,16 +1,1 @@
-{
-    "TSLA": {
-        "name": "Tesla Inc",
-        "symbol": "TSLA",
-        "currentAtPurchase": 1418.57,
-        "invested": "2000",
-        "shares": 1.4104372355430184
-    },
-    "AMZN": {
-        "name": "Amazon.com Inc",
-        "symbol": "AMZN",
-        "currentAtPurchase": 3148.16,
-        "invested": "5000",
-        "shares": 1.5883100381194408
-    }
-}
+{"TSLA": {"name": "Tesla Inc", "symbol": "TSLA", "typeOfBuy": "buy", "currentAtPurchase": 1374.39, "invested": "2000", "shares": 1.455604075691412}, "AMZN": {"name": "Amazon.com Inc", "symbol": "AMZN", "typeOfBuy": "buy", "currentAtPurchase": 3080.67, "invested": "3500", "shares": 1.1363636363636365}}

@@ -22,15 +22,22 @@ class View_trades:
         """
         from little_john.manual_trade import Manual_trade
 
-        # TODO: fix pct change since investment to an actual percentage
         for i in self.data:
             view = Manual_trade()
             current_price = view.client.quote(str(i))['c']
             pct_change = (int(current_price) -
-                          self.data[i]["currentAtPurchase"]) / int(current_price)
+                          self.data[i]["currentAtPurchase"]) / int(current_price) * 100.0
             print(f'\nName: {self.data[i]["name"]}')
             print(f'Symbol: {self.data[i]["symbol"]}')
             print(f'Current: {current_price}')
             print(f'Invested: {self.data[i]["invested"]}')
             print(f'Shares: {self.data[i]["shares"]}')
-            print(f'Change: {pct_change}\n')
+            print(f'Change: {round(pct_change, 1)}%\n')
+            # TODO: add input that allows you to sell stock
+        sell = input('Would you like to sell?')
+        if sell.lower() == 'y' or sell.lower() == 'yes':
+            sym = input('Which stock would you like to sell?')
+            self.selling(sym)
+
+    def selling(self, sym):
+        pass
