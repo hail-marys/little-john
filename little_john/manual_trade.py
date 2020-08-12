@@ -114,6 +114,10 @@ class Manual_trade():
         }
         entry.lower()
         if entry == 'y':
+            from little_john.broker import Broker
+            broke = Broker()
+            amt = self.amount
+            broke.remove_funds(int(amt))
             with open('logs/trades.json', 'r+') as f:
                 data = json.load(f)
                 data.update(new_data)

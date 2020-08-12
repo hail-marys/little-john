@@ -40,8 +40,8 @@ def start():
             True
         elif ipt == '3':
             trade = Manual_trade()
-            os.system('clear' if os.name == 'nt' else 'clear')
             trade.menu()
+            os.system('clear' if os.name == 'nt' else 'clear')
         elif ipt == '4':
             # autobot.toggle()
             True
