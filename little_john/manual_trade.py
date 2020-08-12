@@ -2,10 +2,6 @@ import finnhub
 from little_john.broker import Broker
 import sys
 
-# finnhub_client = finnhub.Client(api_key="brqm9efrh5rce3ls8mdg")
-
-# print(finnhub_client.company_profile(symbol='fdsfae'))
-
 
 class Manual_trade():
     """
