@@ -1,8 +1,7 @@
 import json
 
 
-
-class View_Trades:
+class View_trades:
 
     """
     This shows all your trades
@@ -12,22 +11,33 @@ class View_Trades:
         with open(file, 'r') as trades:
             trade = json.load(trades)
 
-            self.name = trade['name']
-            self.symbol = trade['symbol']
-            self.current = trade['current']
-            self.invested = trade['invested']
-            self.change = trade['pctChanged']
+            self.data = trade
 
     def __repr__(self):
-        return f'"name": {self.name}, "symbol": {self.symbol}, "current": {self.current}, "invested": {self.invested},"pctChanged": {self.change} '
+        return f'data: {self.data} '
 
     def display(self):
         """
         Display stocks from json file
         """
-        for i in range(len(self.name)):
-            print(f'\nName: {self.name[i]}')
-            print(f'Symbol: {self.symbol[i]}')
-            print(f'Current: {self.current[i]}')
-            print(f'Invested: {self.invested[i]}')
-            print(f'Change: {self.change[i]}\n')
+        from little_john.manual_trade import Manual_trade
+
+        for i in self.data:
+            view = Manual_trade()
+            current_price = view.client.quote(str(i))['c']
+            pct_change = (int(current_price) -
+                          self.data[i]["currentAtPurchase"]) / int(current_price) * 100.0
+            print(f'\nName: {self.data[i]["name"]}')
+            print(f'Symbol: {self.data[i]["symbol"]}')
+            print(f'Current: {current_price}')
+            print(f'Invested: {self.data[i]["invested"]}')
+            print(f'Shares: {self.data[i]["shares"]}')
+            print(f'Change: {round(pct_change, 1)}%\n')
+            # TODO: add input that allows you to sell stock
+        sell = input('Would you like to sell?')
+        if sell.lower() == 'y' or sell.lower() == 'yes':
+            sym = input('Which stock would you like to sell?')
+            self.selling(sym)
+
+    def selling(self, sym):
+        pass
