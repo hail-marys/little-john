@@ -12,8 +12,6 @@ class Manual_trade():
     Manual trade class that has methods for handling trades
     """
 
-    # TODO: add key name to file
-
     def __init__(self):
         self.client = finnhub.Client(api_key="brqm9efrh5rce3ls8mdg")
         self.symbol = None

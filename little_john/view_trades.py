@@ -20,9 +20,17 @@ class View_trades:
         """
         Display stocks from json file
         """
+        from little_john.manual_trade import Manual_trade
+
+        # TODO: fix pct change since investment to an actual percentage
         for i in self.data:
+            view = Manual_trade()
+            current_price = view.client.quote(str(i))['c']
+            pct_change = (int(current_price) -
+                          self.data[i]["currentAtPurchase"]) / int(current_price)
             print(f'\nName: {self.data[i]["name"]}')
             print(f'Symbol: {self.data[i]["symbol"]}')
-            print(f'Current: {self.data[i]["currentAtPurchase"]}')
+            print(f'Current: {current_price}')
             print(f'Invested: {self.data[i]["invested"]}')
-            print(f'Change: {self.data[i]["shares"]}\n')
+            print(f'Shares: {self.data[i]["shares"]}')
+            print(f'Change: {pct_change}\n')
