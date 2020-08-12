@@ -5,6 +5,7 @@
 # sys.path.append(parentdir)
 
 import json
+import os
 # from little_john.main import start
 
 import finnhub
@@ -12,6 +13,7 @@ finnhub_client = finnhub.Client(api_key="brqm9efrh5rce3ls8mdg")
 
 
 def sub_menu():
+    os.system('clear' if os.name == 'nt' else 'clear')
     print("""
 Targeted Companies List
 -----------------------
@@ -32,12 +34,14 @@ Would you like to:
     if int(choice) == 1:
         print(view_companies())
         input('- Press any key to continue -')
+        os.system('clear' if os.name == 'nt' else 'clear')
         sub_menu()
 
     if int(choice) == 2:
         print('\nEnter ticker of company to add to list:')
         print(add_company_to_targeted_companies(input('>')))
         input('- Press any key to continue -')
+        os.system('clear' if os.name == 'nt' else 'clear')
         sub_menu()
 
     if int(choice) == 3:
@@ -47,6 +51,7 @@ Would you like to:
             print('Please enter y to confirm, or n to go back')
             response = input('>')
         if response == 'n':
+            os.system('clear' if os.name == 'nt' else 'clear')
             sub_menu()
         else:
             print('Adding all 500 companies now...')
@@ -55,12 +60,14 @@ Would you like to:
                     add_company_to_targeted_companies(i)
             print('Success')
             input('- Press any key to continue -')
+            os.system('clear' if os.name == 'nt' else 'clear')
             sub_menu()
 
     if int(choice) == 4:
         print('\nEnter ticker of the company to remove from targeted list')
         print(remove_company_from_targeted_companies(input('>')))
         input('- Press any key to continue -')
+        os.system('clear' if os.name == 'nt' else 'clear')
         sub_menu()
 
     if int(choice) == 5:
@@ -70,6 +77,7 @@ Would you like to:
             print('Please enter y to confirm, or n to go back')
             response = input('>')
         if response == 'n':
+            os.system('clear' if os.name == 'nt' else 'clear')
             sub_menu()
         else:
             with open('../user_data/sp500_companies.json', 'r') as file:
@@ -77,6 +85,7 @@ Would you like to:
                     remove_company_from_targeted_companies(i)
             print('Targeted companies list was cleared')
             input('- Press any key to continue -')
+            os.system('clear' if os.name == 'nt' else 'clear')
             sub_menu()
 
     if int(choice) == 6:
@@ -126,6 +135,9 @@ def remove_company_from_targeted_companies(company):
 
 
 def is_real_company(ticker):
+    with open('../user_data/sp500_companies.json', 'r') as file:
+        if ticker in json.load(file):
+            return True
     data = finnhub_client.company_profile(symbol=ticker)
     if data == {}:
         return False
