@@ -1,6 +1,10 @@
 import little_john.add_to_target_list as LJ
 import builtins
 
+# Test in own file
+# Test every functionality of program
+# So do the builtins
+
 # Replace print and input 
 
 
