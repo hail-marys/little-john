@@ -146,12 +146,12 @@ def is_real_company(ticker):
 
 
 def is_unique(ticket):
-        with open('../user_data/target_list.json', 'r+') as file:
-            response = json.load(file)
-            for i in response["companies"]:
-                if i == ticket:
-                    return False
-            return True
+    with open('../user_data/target_list.json', 'r+') as file:
+        response = json.load(file)
+        for i in response["companies"]:
+            if i == ticket:
+                return False
+        return True
 
 
 def view_companies():
