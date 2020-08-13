@@ -8,6 +8,10 @@ class View_trades:
     """
 
     def __init__(self):
+        """
+        Pulls in trade data and the Manual trade class and stores it
+        """
+
         from little_john.manual_trade import Manual_trade
         with open('logs/trades.json', 'r') as trades:
             trade = json.load(trades)
@@ -20,11 +24,10 @@ class View_trades:
 
     def display(self):
         """
-        Display stocks from json file
+        Display stocks from json file and takes inputs
         """
 
         for i in self.data:
-
             current_price = self.quote.client.quote(str(i))['c']
             pct_change = (int(current_price) -
                           self.data[i]["currentAtPurchase"]) / int(current_price) * 100.0
@@ -34,7 +37,7 @@ class View_trades:
             print(f'Invested: {self.data[i]["invested"]}')
             print(f'Shares: {round(self.data[i]["shares"], 2)}')
             print(f'Change: {round(pct_change, 1)}%\n')
-            # TODO: add input that allows you to sell stock
+
         sell = input('Would you like to sell? y or n\n')
         if sell.lower() == 'y' or sell.lower() == 'yes':
             sym = input('Which stock would you like to sell? Enter symbol\n')
@@ -43,31 +46,57 @@ class View_trades:
             return
 
     def selling(self, sym):
-        # print(f'data: {self.data}')
+        """
+        Starts the selling process.
+
+        Args:
+            sym str: The stock symbol
+        """
         if self.data[sym]:
             self.delete_json(sym, self.data)
-            # TODO: delete entry from json file
-            # TODO: add or remove funds from broker
         else:
             print("DOESN'T EXIST")
 
     def delete_json(self, sym, data):
-        self.talk_to_broker(sym, self.data)
+        """
+        deletes data from the dict then rewrites the JSON file and talks to the broker.
+
+        Args:
+            sym str: Symbol of the stock
+            data dict: Object of all the data from the trade.JSON
+        """
+        self.talk_to_broker(sym)
         del data[sym]
         with open('logs/trades.json', 'w+') as f:
             json.dump(data, f)
 
-    def talk_to_broker(self, sym, data):
+    def talk_to_broker(self, sym):
+        """
+        Pull in Broker and updates it with the new funds from the sell.
+
+        Args:
+            sym str: Stock Symbol
+        """
         from little_john.broker import Broker
         broke = Broker()
-        amt = data[sym]['invested']
+        amt = self.data[sym]['invested']
         amt = int(amt)
         ret = self.find_share_val(sym, amt)
         new_funds = ret + amt
         broke.add_funds(new_funds)
 
     def find_share_val(self, sym, amt):
+        """
+        Gets the shares from the data and the current share price. Multiplies and subtracts the amt invested.
+
+        Args:
+            sym str: Stock symbol
+            amt int: number that you invested
+
+        Returns:
+            int: The number that you need to add to the amt to give to the broker.
+        """
         shares = self.data[sym]['shares']
-        curr = self.quote.client.quote(sym)['c']
-        ttl = (shares * curr) - amt
+        current = self.quote.client.quote(sym)['c']
+        ttl = (shares * current) - amt
         return round(ttl, 2)

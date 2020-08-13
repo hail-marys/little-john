@@ -32,7 +32,7 @@ def start():
         ipt = input('> ')
         if ipt == 'quit':
             os.system('clear' if os.name == 'nt' else 'clear')
-            sys.exit('thanks for using the app')
+            sys.exit('Thanks for using the app')
         elif ipt == '1':
             os.system('clear' if os.name == 'nt' else 'clear')
             view = View_trades()
