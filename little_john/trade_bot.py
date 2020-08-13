@@ -19,4 +19,4 @@ class Trade_Bot:
 if __name__ == "__main__":
     test = Trade_Bot('./trade_history.json')
     test.turn_on_or_off()
-        
+
