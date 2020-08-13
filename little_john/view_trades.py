@@ -31,13 +31,34 @@ class View_trades:
             print(f'Symbol: {self.data[i]["symbol"]}')
             print(f'Current: {current_price}')
             print(f'Invested: {self.data[i]["invested"]}')
-            print(f'Shares: {self.data[i]["shares"]}')
+            print(f'Shares: {round(self.data[i]["shares"], 2)}')
             print(f'Change: {round(pct_change, 1)}%\n')
             # TODO: add input that allows you to sell stock
-        sell = input('Would you like to sell?')
+        sell = input('Would you like to sell?\n')
         if sell.lower() == 'y' or sell.lower() == 'yes':
-            sym = input('Which stock would you like to sell?')
-            self.selling(sym)
+            sym = input('Which stock would you like to sell?\n')
+            self.selling(sym.upper())
+        else:
+            return
 
     def selling(self, sym):
+        # print(f'data: {self.data}')
+        if self.data[sym]:
+            print('FOUND IT')
+
+            self.delete_json(sym, self.data)
+            self.talk_to_broker(self.data)
+            # TODO: delete entry from json file
+            # TODO: add or remove funds from broker
+        else:
+            print("DOESN'T EXIST")
+        ent = input('enter')
+
+    def delete_json(self, sym, data):
+        self.talk_to_broker(self.data)
+        del data[sym]
+        with open('logs/trades.json', 'w+') as f:
+            json.dump(data, f)
+
+    def talk_to_broker(self, data):
         pass
