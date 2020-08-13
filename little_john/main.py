@@ -1,8 +1,5 @@
-import os, sys
-currentdir = os.path.dirname(os.path.realpath(__file__))
-parentdir = os.path.dirname(currentdir)
-sys.path.append(parentdir)
-
+import os
+import sys
 from little_john.view_trades import View_trades
 from little_john.manual_trade import Manual_trade
 import json
@@ -38,7 +35,7 @@ def start():
             sys.exit('thanks for using the app')
         elif ipt == '1':
             os.system('clear' if os.name == 'nt' else 'clear')
-            view = View_trades('logs/trades.json')
+            view = View_trades()
             view.display()
         elif ipt == '2':
             # search_stocks.menu()

@@ -7,11 +7,13 @@ class View_trades:
     This shows all your trades
     """
 
-    def __init__(self, file):
-        with open(file, 'r') as trades:
+    def __init__(self):
+        from little_john.manual_trade import Manual_trade
+        with open('logs/trades.json', 'r') as trades:
             trade = json.load(trades)
 
             self.data = trade
+            self.quote = Manual_trade()
 
     def __repr__(self):
         return f'data: {self.data} '
@@ -20,11 +22,10 @@ class View_trades:
         """
         Display stocks from json file
         """
-        from little_john.manual_trade import Manual_trade
 
         for i in self.data:
-            view = Manual_trade()
-            current_price = view.client.quote(str(i))['c']
+
+            current_price = self.quote.client.quote(str(i))['c']
             pct_change = (int(current_price) -
                           self.data[i]["currentAtPurchase"]) / int(current_price) * 100.0
             print(f'\nName: {self.data[i]["name"]}')
@@ -34,9 +35,9 @@ class View_trades:
             print(f'Shares: {round(self.data[i]["shares"], 2)}')
             print(f'Change: {round(pct_change, 1)}%\n')
             # TODO: add input that allows you to sell stock
-        sell = input('Would you like to sell?\n')
+        sell = input('Would you like to sell? y or n\n')
         if sell.lower() == 'y' or sell.lower() == 'yes':
-            sym = input('Which stock would you like to sell?\n')
+            sym = input('Which stock would you like to sell? Enter symbol\n')
             self.selling(sym.upper())
         else:
             return
@@ -49,7 +50,6 @@ class View_trades:
             # TODO: add or remove funds from broker
         else:
             print("DOESN'T EXIST")
-        ent = input('enter')
 
     def delete_json(self, sym, data):
         self.talk_to_broker(sym, self.data)
@@ -61,8 +61,13 @@ class View_trades:
         from little_john.broker import Broker
         broke = Broker()
         amt = data[sym]['invested']
-        self.find_share_val(amt,)
+        amt = int(amt)
+        ret = self.find_share_val(sym, amt)
+        new_funds = ret + amt
+        broke.add_funds(new_funds)
 
     def find_share_val(self, sym, amt):
-        # shares = self.data[]
-        pass
+        shares = self.data[sym]['shares']
+        curr = self.quote.client.quote(sym)['c']
+        ttl = (shares * curr) - amt
+        return round(ttl, 2)
