@@ -40,12 +40,14 @@ class SearchStocks:
         """Gets current stock price"""
         current = self.client.quote(symbol)['c']
         print(f'Current Stock Value: {current}')
+        return f'Current Stock Value: {current}' 
     
 
     def open_stock_price(self, symbol):
         """Gets stock price at open"""
         open = self.client.quote(symbol)['o']
         print(f'Open: {open}')
+        return f'Open: {open}'
 
 
     def high_stock_price(self, symbol):
