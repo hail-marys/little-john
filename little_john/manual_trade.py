@@ -91,7 +91,8 @@ class Manual_trade():
         """
         Takes all the data and appends it to the JSON file for the view trades to reference
 
-        # TODO: can't enter duplicate values
+        # TODO: can't enter duplicate values.
+
         Args:
             entry str: takes yes or no
         """
