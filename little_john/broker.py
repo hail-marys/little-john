@@ -32,14 +32,11 @@ class Broker():
         try:
             with open('../logs/user_balance.json', 'w+') as file:
                 file.write(json.dumps({
-
                     "balance": self.balance
-
                 }))
         except FileNotFoundError:
             with open('logs/user_balance.json', 'w+') as file:
                 file.write(json.dumps({
-
                     "balance": self.balance
                 }))
 

@@ -55,7 +55,7 @@ Would you like to:
             sub_menu()
         else:
             print('Adding all 500 companies now...')
-            with open('../user_data/sp500_companies.json', 'r') as file:
+            with open('user_data/sp500_companies.json', 'r') as file:
                 for i in json.load(file):
                     add_company_to_targeted_companies(i)
             print('Success')
@@ -80,7 +80,7 @@ Would you like to:
             os.system('clear' if os.name == 'nt' else 'clear')
             sub_menu()
         else:
-            with open('../user_data/sp500_companies.json', 'r') as file:
+            with open('user_data/sp500_companies.json', 'r') as file:
                 for i in json.load(file):
                     remove_company_from_targeted_companies(i)
             print('Targeted companies list was cleared')
@@ -102,14 +102,14 @@ def add_company_to_targeted_companies(company):
     company = company.upper()
     if is_real_company(company):
         target = None
-        with open('../user_data/target_list.json', 'r+') as file:
+        with open('user_data/target_list.json', 'r+') as file:
             if is_unique(company):
                 response = json.load(file)
                 response["companies"].append(company)
                 target = response
             else:
                 return f'{company} is already on the list.'
-        with open('../user_data/target_list.json', 'w+') as file:
+        with open('user_data/target_list.json', 'w+') as file:
             file.write(json.dumps(target))
             return f'Successfully added {company} to list.'
     else:
@@ -120,14 +120,14 @@ def remove_company_from_targeted_companies(company):
     company = company.upper()
     if is_real_company(company):
         target = None
-        with open('../user_data/target_list.json', 'r+') as file:
+        with open('user_data/target_list.json', 'r+') as file:
             if is_unique(company) == False:
                 response = json.load(file)
                 response["companies"].remove(company)
                 target = response
             else:
                 return f'{company} was not on the list.'
-        with open('../user_data/target_list.json', 'w+') as file:
+        with open('user_data/target_list.json', 'w+') as file:
             file.write(json.dumps(target))
             return f'Successfully removed {company} from list.'
     else:
@@ -135,7 +135,7 @@ def remove_company_from_targeted_companies(company):
 
 
 def is_real_company(ticker):
-    with open('../user_data/sp500_companies.json', 'r') as file:
+    with open('user_data/sp500_companies.json', 'r') as file:
         if ticker in json.load(file):
             return True
     data = finnhub_client.company_profile(symbol=ticker)
@@ -146,7 +146,7 @@ def is_real_company(ticker):
 
 
 def is_unique(ticket):
-    with open('../user_data/target_list.json', 'r+') as file:
+    with open('user_data/target_list.json', 'r+') as file:
         response = json.load(file)
         for i in response["companies"]:
             if i == ticket:
@@ -156,7 +156,7 @@ def is_unique(ticket):
 
 def view_companies():
     companies = ''
-    with open('../user_data/target_list.json', 'r') as file:
+    with open('user_data/target_list.json', 'r') as file:
         response = json.load(file)
         for i in response['companies']:
             companies += f'-{i}\n'
