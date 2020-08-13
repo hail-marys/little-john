@@ -1,8 +1,12 @@
-import sys
+import os, sys
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
+
 from little_john.view_trades import View_trades
 from little_john.manual_trade import Manual_trade
 import json
-import os
+
 """
 >> python Little_John/main.py
 
