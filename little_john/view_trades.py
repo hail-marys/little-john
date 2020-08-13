@@ -44,10 +44,7 @@ class View_trades:
     def selling(self, sym):
         # print(f'data: {self.data}')
         if self.data[sym]:
-            print('FOUND IT')
-
             self.delete_json(sym, self.data)
-            self.talk_to_broker(self.data)
             # TODO: delete entry from json file
             # TODO: add or remove funds from broker
         else:
@@ -55,10 +52,17 @@ class View_trades:
         ent = input('enter')
 
     def delete_json(self, sym, data):
-        self.talk_to_broker(self.data)
+        self.talk_to_broker(sym, self.data)
         del data[sym]
         with open('logs/trades.json', 'w+') as f:
             json.dump(data, f)
 
-    def talk_to_broker(self, data):
+    def talk_to_broker(self, sym, data):
+        from little_john.broker import Broker
+        broke = Broker()
+        amt = data[sym]['invested']
+        self.find_share_val(amt,)
+
+    def find_share_val(self, sym, amt):
+        # shares = self.data[]
         pass
