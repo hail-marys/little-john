@@ -1,6 +1,4 @@
 import finnhub
-import sys
-import datetime
 import json
 
 class View_Trade_History:
