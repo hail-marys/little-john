@@ -1,22 +1,18 @@
 {
-    "name": [
-        "Apple",
-        "Tesla"
-    ],
-    "symbol": [
-        "AAPL",
-        "TSLA"
-    ],
-    "current": [
-        "440.45",
-        "1565.25"
-    ],
-    "invested": [
-        "100",
-        "50"
-    ],
-    "pctChanged": [
-        "10%",
-        "5%"
-    ]
+    "MSFT": {
+        "name": "Microsoft Corp",
+        "symbol": "MSFT",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 203.38,
+        "invested": "500",
+        "shares": 2.4630541871921183
+    },
+    "AMZN": {
+        "name": "Amazon.com Inc",
+        "symbol": "AMZN",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 3080.67,
+        "invested": "2000",
+        "shares": 0.6493506493506493
+    }
 }
