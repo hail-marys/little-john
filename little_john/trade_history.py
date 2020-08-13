@@ -19,12 +19,14 @@ class View_Trade_History:
             
             
     
-    def __repr__(self):  # This method returns the string representation of the object
+    def __repr__(self):
+        """This method returns the string representation of the object
+        """
         return f'"name": {self.name}, "symbol": {self.symbol},"amount": {self.amount},"shares": {self.number_of_shares},"date_purchased": {self.start_date}'
 
     def display_history(self):
         """
-        Display trading history from json file
+        Display data will be pulled from json file
         """
         for i in range(len(self.name)):
             print(f'\nName: {self.name[i]}')
