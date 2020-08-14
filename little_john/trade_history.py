@@ -1,9 +1,11 @@
 import finnhub
 import json
 
+
 class View_Trade_History:
     """this class will generate the trade history
     """
+
     def __init__(self, file):
         with open(file, 'r') as history:
             trade_history = json.load(history)
@@ -14,9 +16,7 @@ class View_Trade_History:
             self.number_of_shares = trade_history['shares']
             self.start_date = trade_history['date_purchased']
             print(trade_history)
-            
-            
-    
+
     def __repr__(self):
         """This method returns the string representation of the object
         """
@@ -33,13 +33,7 @@ class View_Trade_History:
             print(f'Shares: {self.number_of_shares[i]}')
             print(f'Date_Purchased: {self.start_date[i]}\n')
 
+
 if __name__ == "__main__":
     test = View_Trade_History('./logs/trade_history.json')
     test.display_history()
-    
-
-
-        
-        
-    
-

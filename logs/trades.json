@@ -3,16 +3,8 @@
         "name": "Microsoft Corp",
         "symbol": "MSFT",
         "typeOfBuy": "buy",
-        "currentAtPurchase": 203.38,
-        "invested": "500",
-        "shares": 2.4630541871921183
-    },
-    "AMZN": {
-        "name": "Amazon.com Inc",
-        "symbol": "AMZN",
-        "typeOfBuy": "buy",
-        "currentAtPurchase": 3080.67,
-        "invested": "2000",
-        "shares": 0.6493506493506493
+        "currentAtPurchase": 219.7,
+        "invested": 1500,
+        "shares": 7.21
     }
 }

@@ -1,6 +1,7 @@
 import finnhub
 from little_john.broker import Broker
 import sys
+import json
 
 
 class Manual_trade():
@@ -85,7 +86,7 @@ class Manual_trade():
         Args:
             amt str: This is the amount that you want from the broker.
         """
-        self.amount = amt
+        self.amount = int(amt)
 
     def confirmation(self, entry):
         """
@@ -97,10 +98,13 @@ class Manual_trade():
             entry str: takes yes or no
         """
 
-        import json
-        shares = int(self.amount) / int(self.current)
+        from datetime import date
 
-        new_data = {self.symbol: {
+        shares = int(self.amount) / int(self.current)
+        today = date.today()
+        today = today.strftime("%m/%d/%Y")
+
+        active = {self.symbol: {
             "name": self.company,
             "symbol": self.symbol,
             "typeOfBuy": self.buy_or_trade,
@@ -109,17 +113,26 @@ class Manual_trade():
             "shares": round(shares, 2)
         }
         }
+
+        history = {self.symbol: {
+            "name": self.company,
+            "symbol": self.symbol,
+            "typeOfBuy": self.buy_or_trade,
+            "invested": self.amount,
+            "shares": round(shares, 2),
+            "date_purchased": today
+        }
+        }
+
         entry.lower()
         if entry == 'y':
             from little_john.broker import Broker
             broke = Broker()
             amt = self.amount
             broke.remove_funds(int(amt))
-            with open('logs/trades.json', 'r+') as f:
-                data = json.load(f)
-                data.update(new_data)
-                f.seek(0)
-                json.dump(data, f)
+            self.check_dup('logs/trades.json')
+            # self.save_trade('logs/trades.json', active)
+            # self.save_trade('logs/trade_history.json', history)
         elif entry == 'n':
             # TODO: come up with something better to return
             return
@@ -127,3 +140,43 @@ class Manual_trade():
             print('Invalid input')
             confirm = input('Confirm? Enter yes or no\n')
             self.confirmation(confirm)
+
+    def save_trade(self, file, new_data):
+        """
+        opens and appends new data to json file
+
+        Args:
+            file JSON: Json file path
+            new_data dict: dict of data to append
+        """
+
+        with open(file, 'r+') as f:
+            data = json.load(f)
+            data.update(new_data)
+            f.seek(0)
+            json.dump(data, f)
+
+    def check_dup(self, file):
+        # TODO: Not working correctly updates values but doesn't delete old ones just moves them down.
+        with open(file, 'r+') as f:
+            data = json.load(f)
+            key_chk = self.symbol
+
+            share = int(self.amount) / int(self.current)
+            shares_added = share + data[key_chk]['shares']
+
+            invest = data[key_chk]['invested'] + self.amount
+
+            curr = data[key_chk]['currentAtPurchase']
+            mid = (curr + self.current) / 2
+            if key_chk in set(data):
+                data[key_chk].update(invested=invest)
+                data[key_chk].update(shares=round(shares_added, 2))
+                data[key_chk].update(currentAtPurchase=round(mid, 2))
+                f.seek(0)
+                json.dump(data, f)
+                i = input('DUPLICATE FOUND')
+
+            else:
+                self.save_trade('logs/trades.json', data)
+                i = input('NOT FOUND')
