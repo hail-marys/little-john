@@ -106,7 +106,7 @@ class Manual_trade():
             "typeOfBuy": self.buy_or_trade,
             "currentAtPurchase": self.current,
             "invested": self.amount,
-            "shares": shares
+            "shares": round(shares, 2)
         }
         }
         entry.lower()
