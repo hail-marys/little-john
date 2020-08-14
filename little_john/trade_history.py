@@ -1,6 +1,4 @@
 import finnhub
-import sys
-import datetime
 import json
 
 class View_Trade_History:
@@ -14,26 +12,26 @@ class View_Trade_History:
             self.symbol = trade_history['symbol']
             self.amount = trade_history['amount']
             self.number_of_shares = trade_history['shares']
-            self.start_date = trade_history['start_date']
-            self.end_date = trade_history['end_date']
+            self.start_date = trade_history['date_purchased']
             print(trade_history)
             
             
     
-    def __repr__(self):  # This method returns the string representation of the object
-        return f'"name": {self.name}, "symbol": {self.symbol},"amount": {self.amount},"shares": {self.number_of_shares},"start_date": {self.start_date}, "end_date": {self.end_date}'  
+    def __repr__(self):
+        """This method returns the string representation of the object
+        """
+        return f'"name": {self.name}, "symbol": {self.symbol},"amount": {self.amount},"shares": {self.number_of_shares},"date_purchased": {self.start_date}'
 
     def display_history(self):
         """
-        Display trading history from json file
+        Display data will be pulled from json file
         """
         for i in range(len(self.name)):
             print(f'\nName: {self.name[i]}')
             print(f'Symbol: {self.symbol[i]}')
             print(f'Amount: {self.amount[i]}')
             print(f'Shares: {self.number_of_shares[i]}')
-            print(f'Start_Date: {self.start_date[i]}')
-            print(f'End_Date: {self.end_date[i]}\n')
+            print(f'Date_Purchased: {self.start_date[i]}\n')
 
 if __name__ == "__main__":
     test = View_Trade_History('./logs/trade_history.json')
