@@ -1,12 +1,18 @@
 {
-  "AMZN": {
-    "name": "Amazon.com Inc",
-    "symbol": "AMZN",
+  "1597511643": {
+    "name": "Microsoft Corp",
+    "symbol": "MSFT",
     "typeOfBuy": "buy",
-    "invested": "2000",
-    "shares": 0.6493506493506493,
-    "date_purchased": "07/29/2020"
+    "invested": 400,
+    "shares": 1.92,
+    "date_purchased": "08/15/2020"
+  },
+  "1597511669": {
+    "name": "Microsoft Corp",
+    "symbol": "MSFT",
+    "typeOfBuy": "buy",
+    "invested": 500,
+    "shares": 2.4,
+    "date_purchased": "08/15/2020"
   }
 }
-
-
