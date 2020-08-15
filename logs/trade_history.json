@@ -1,10 +1,18 @@
 {
-  "MSFT": {
+  "1597511643": {
     "name": "Microsoft Corp",
     "symbol": "MSFT",
     "typeOfBuy": "buy",
-    "invested": 1000,
-    "shares": 4.81,
-    "date_purchased": "08/13/2020"
+    "invested": 400,
+    "shares": 1.92,
+    "date_purchased": "08/15/2020"
+  },
+  "1597511669": {
+    "name": "Microsoft Corp",
+    "symbol": "MSFT",
+    "typeOfBuy": "buy",
+    "invested": 500,
+    "shares": 2.4,
+    "date_purchased": "08/15/2020"
   }
 }
