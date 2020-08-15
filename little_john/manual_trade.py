@@ -174,7 +174,8 @@ class Manual_trade():
                 data[key_chk].update(shares=round(shares_added, 2))
                 data[key_chk].update(currentAtPurchase=round(mid, 2))
                 f.seek(0)
-                json.dump(data, f)
+                print(data)
+                json.dump(data, f, indent=4)
                 i = input('DUPLICATE FOUND')
 
             else:
