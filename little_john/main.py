@@ -1,10 +1,13 @@
-import os
-import sys
+import os, sys
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
 from little_john.view_trades import View_trades
 from little_john.manual_trade import Manual_trade
 import little_john.add_to_target_list as Target_List
 from little_john.broker import Broker
 from little_john.trade_bot import Trade_Bot
+from little_john.search_stocks import SearchStocks
 import json
 
 """
@@ -43,7 +46,8 @@ def start():
             view = View_trades()
             view.display()
         elif ipt == '2':
-            # search_stocks.menu()
+            search = SearchStocks() 
+            search.menu()
             True
         elif ipt == '3':
             os.system('clear' if os.name == 'nt' else 'clear')
