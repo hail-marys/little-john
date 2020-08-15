@@ -1,12 +1,13 @@
 import finnhub
 import requests
+import config 
 
 
 class SearchStocks:
 
     def __init__(self):
         """Hold API key"""
-        self.client = finnhub.Client(api_key='brqm9efrh5rce3ls8mdg')
+        self.client = finnhub.Client(config.api_key)
 
 
     def menu(self):
