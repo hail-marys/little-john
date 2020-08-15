@@ -130,7 +130,8 @@ class Manual_trade():
             broke = Broker()
             amt = self.amount
             broke.remove_funds(int(amt))
-            self.check_dup('logs/trades.json')
+            self.check_dup('logs/trades.json', active)
+            self.check_dup('logs/trade_history.json', active)
             # self.save_trade('logs/trades.json', active)
             # self.save_trade('logs/trade_history.json', history)
         elif entry == 'n':
@@ -156,8 +157,9 @@ class Manual_trade():
             f.seek(0)
             json.dump(data, f)
 
-    def check_dup(self, file):
+    def check_dup(self, file, new_data):
         # TODO: Not working correctly updates values but doesn't delete old ones just moves them down.
+        # TODO: Unix for trade history key
         with open(file, 'r+') as f:
             data = json.load(f)
             key_chk = self.symbol
@@ -169,15 +171,15 @@ class Manual_trade():
 
             curr = data[key_chk]['currentAtPurchase']
             mid = (curr + self.current) / 2
+
             if key_chk in set(data):
                 data[key_chk].update(invested=invest)
                 data[key_chk].update(shares=round(shares_added, 2))
                 data[key_chk].update(currentAtPurchase=round(mid, 2))
                 f.seek(0)
-                print(data)
                 json.dump(data, f, indent=4)
                 i = input('DUPLICATE FOUND')
 
             else:
-                self.save_trade('logs/trades.json', data)
+                self.save_trade('logs/trades.json', new_data)
                 i = input('NOT FOUND')
