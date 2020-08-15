@@ -35,13 +35,14 @@ def start():
     Instance_Trade_Bot = Trade_Bot()
     os.system('clear' if os.name == 'nt' else 'clear')
     run = True
+    messages = Instance_Trade_Bot.message
     while run:
         Instance_Broker = Broker()
         os.system('clear' if os.name == 'nt' else 'clear')
 
         display_text(f'{Instance_Broker.balance}',
-                     f'{Instance_Trade_Bot.status}')
-        ipt = input('> ')
+                     f'{Instance_Trade_Bot.status}', messages='None')
+        ipt = input('> ').lower()
         if ipt == 'quit':
             os.system('clear' if os.name == 'nt' else 'clear')
             sys.exit('Thanks for using the app')
@@ -72,10 +73,12 @@ def start():
             print('Select correct option')
 
 
-def display_text(balance, bot):
+def display_text(balance, bot, messages):
     print(f'\nHello, you have {balance} invested.')
     print(f'Bot is {bot}')
-    print('menu')
+    # blank line, once bot triggers something. My message.
+    print(f'Messages: {messages}')
+    print('MENU')
     print('1. View current trades')
     print('2. Search for stocks')
     print('3. Make stock trade')

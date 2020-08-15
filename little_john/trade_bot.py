@@ -12,6 +12,7 @@ class Trade_Bot:
     def __init__(self):
         self.status = 'off'
         self.client = finnhub.Client(config.api_key)
+        self.message = 'None'
 
     def turn_on_or_off(self):
         """ask if you want to turn bot on or off
@@ -66,7 +67,7 @@ class Trade_Bot:
 
     def alert(self, sym, amt, trans):
         print(f'R2D2 {trans} {amt} of {sym} shares')
-        return f'R2D2 {trans} {amt} of {sym} shares'
+        self.message = f'R2D2 {trans} {amt} of {sym} shares'
 
 
 trade = Trade_Bot()
@@ -93,7 +94,7 @@ invterval check on bought stocks to sell
     * every hr eval sell
 Live alert on the main pages showing when stocks are bought or sold
     * when a condition is met return results to main.py
-
+    * Menu has a message queue
 
 """
 
