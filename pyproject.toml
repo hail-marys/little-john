@@ -16,6 +16,7 @@ autopep8 = "^1.5.4"
 finnhub-python = "^2.1.0"
 mplfinance = "^0.12.7-alpha.0"
 jupyterlab = "^2.2.4"
+sklearn = "^0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
