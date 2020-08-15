@@ -9,7 +9,7 @@ class View_Trade_History:
             trade_history = json.load(history)
             self.data = trade_history
             print(trade_history)
-
+# test
     def display_history(self):
         """
         Display data will be pulled from json file
