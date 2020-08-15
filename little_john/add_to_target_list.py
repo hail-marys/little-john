@@ -13,6 +13,11 @@ finnhub_client = finnhub.Client(api_key="brqm9efrh5rce3ls8mdg")
 
 
 def sub_menu():
+    """
+    Prints menu to add company to targeted company list. Takes in user input to navigate this menu.
+    after user input of 1-5, sub_menu() gets called again, and menu redisplayed. If 6 is seleceted,
+    returns user back to main menu which calls this function.
+    """
     os.system('clear' if os.name == 'nt' else 'clear')
     print("""
 Targeted Companies List
@@ -98,7 +103,6 @@ def add_company_to_targeted_companies(company):
     Accepts string as input, checks to make sure it is a valid company
     then adds company to targeted_companies.json file.
     """
-    # make case insensitive
     company = company.upper()
     if is_real_company(company):
         target = None
@@ -117,6 +121,10 @@ def add_company_to_targeted_companies(company):
 
 
 def remove_company_from_targeted_companies(company):
+    """
+    Accepts string as input, checks to make sure it is a valid company, and is currently on list,
+    then removes company from targeted_companies.json file.
+    """
     company = company.upper()
     if is_real_company(company):
         target = None
@@ -135,6 +143,11 @@ def remove_company_from_targeted_companies(company):
 
 
 def is_real_company(ticker):
+    """
+    Takes in string as input. Returns true if ticker is in sp500_companies.json file. If not,
+    then it checks if the finnhub API returns any data on company. If not in json file and 
+    finnhub returns no data then returns False.
+    """
     with open('user_data/sp500_companies.json', 'r') as file:
         if ticker in json.load(file):
             return True
@@ -145,16 +158,25 @@ def is_real_company(ticker):
         return True
 
 
-def is_unique(ticket):
+def is_unique(ticker):
+    """
+    Takes in one string argument. Returns True if the ticker given is not in the target_list.json
+    file. Returns False if the ticker is in the file. This prevents the user from adding the same company
+    multiple times or removing a company that is not there.  
+    """
     with open('user_data/target_list.json', 'r+') as file:
         response = json.load(file)
         for i in response["companies"]:
-            if i == ticket:
+            if i == ticker:
                 return False
         return True
 
 
 def view_companies():
+    """
+    Takes in no arguments. Reads the list of companies in target_list.json file, and returns them as
+    a multi line string. 
+    """
     companies = ''
     with open('user_data/target_list.json', 'r') as file:
         response = json.load(file)

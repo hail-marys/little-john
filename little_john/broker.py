@@ -11,6 +11,10 @@ class Broker():
     """
 
     def __init__(self):
+        """
+        Takes in no arguments. Initializes with self.balance = the balance in the user_balance.json 
+        file in logs. For user_balance.json, the key is "balance" and the value is a number.
+        """
         try:
             with open('../logs/user_balance.json', 'r') as file:
                 response = json.load(file)
@@ -21,14 +25,23 @@ class Broker():
                 self.balance = response['balance']
 
     def add_funds(self, amount):
+        """
+        Take in 1 argument, "amount" which is a number. Increases self.balance by amound. Then, runs update_user_balance_json() to increase balance in user_balance.json by amount. 
+        """
         self.balance += amount
         self.update_user_balance_json()
 
     def remove_funds(self, amount):
+        """
+        Take in 1 argument, "amount" which is a number. Decreases self.balance by amound. Then, runs update_user_balance_json() to decrease balance in user_balance.json by amount. 
+        """
         self.balance -= amount
         self.update_user_balance_json()
 
     def update_user_balance_json(self):
+        """
+        Takes in no arguments. Rewrites the "balance" in user_balance.json to be what self.balance is.
+        """
         try:
             with open('../logs/user_balance.json', 'w+') as file:
                 file.write(json.dumps({
