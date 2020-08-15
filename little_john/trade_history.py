@@ -25,6 +25,11 @@ class View_Trade_History:
 if __name__ == "__main__":
     test = View_Trade_History('./logs/trade_history.json')
     
+    
+    
+    
+
+    
         
         
     
