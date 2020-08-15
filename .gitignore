@@ -115,3 +115,7 @@ venv.bak/
 # js
 node_modules/
 .next/
+
+config.py
+__pycache__
+.ipynb_checkpoints

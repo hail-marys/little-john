@@ -1,14 +1,16 @@
-import os, sys
+import json
+from little_john.trade_history import View_Trade_History
+from little_john.search_stocks import SearchStocks
+from little_john.trade_bot import Trade_Bot
+from little_john.broker import Broker
+import little_john.add_to_target_list as Target_List
+from little_john.manual_trade import Manual_trade
+from little_john.view_trades import View_trades
+import os
+import sys
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
-from little_john.view_trades import View_trades
-from little_john.manual_trade import Manual_trade
-import little_john.add_to_target_list as Target_List
-from little_john.broker import Broker
-from little_john.trade_bot import Trade_Bot
-from little_john.search_stocks import SearchStocks
-import json
 
 """
 >> python Little_John/main.py
@@ -36,7 +38,8 @@ def start():
     while run:
         Instance_Broker = Broker()
         os.system('clear' if os.name == 'nt' else 'clear')
-        display_text(f'{Instance_Broker.balance}', f'{Instance_Trade_Bot.status}')
+        display_text(f'{Instance_Broker.balance}',
+                     f'{Instance_Trade_Bot.status}')
         ipt = input('> ')
         if ipt == 'quit':
             os.system('clear' if os.name == 'nt' else 'clear')
@@ -46,7 +49,7 @@ def start():
             view = View_trades()
             view.display()
         elif ipt == '2':
-            search = SearchStocks() 
+            search = SearchStocks()
             search.menu()
             True
         elif ipt == '3':
@@ -58,7 +61,8 @@ def start():
             Instance_Trade_Bot.turn_on_or_off()
             True
         elif ipt == '5':
-            # view_account.menu()
+            hist = View_Trade_History('logs/trade_history.json')
+            hist.display_history()
             True
         elif ipt == '6':
             Target_List.sub_menu()

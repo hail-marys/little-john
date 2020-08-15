@@ -1,18 +1,26 @@
 {
-  "1597511643": {
-    "name": "Microsoft Corp",
-    "symbol": "MSFT",
-    "typeOfBuy": "buy",
-    "invested": 400,
-    "shares": 1.92,
-    "date_purchased": "08/15/2020"
-  },
-  "1597511669": {
-    "name": "Microsoft Corp",
-    "symbol": "MSFT",
-    "typeOfBuy": "buy",
-    "invested": 500,
-    "shares": 2.4,
-    "date_purchased": "08/15/2020"
-  }
+    "1597511643": {
+        "name": "Microsoft Corp",
+        "symbol": "MSFT",
+        "typeOfBuy": "buy",
+        "invested": 400,
+        "shares": 1.92,
+        "date_purchased": "08/15/2020"
+    },
+    "1597511669": {
+        "name": "Microsoft Corp",
+        "symbol": "MSFT",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 2.4,
+        "date_purchased": "08/15/2020"
+    },
+    "1597515263": {
+        "name": "Apple Inc",
+        "symbol": "AAPL",
+        "typeOfBuy": "short",
+        "invested": 500,
+        "shares": 1.09,
+        "date_purchased": "08/15/2020"
+    }
 }

@@ -38,7 +38,7 @@ class View_trades:
             print(f'Shares: {round(self.data[i]["shares"], 2)}')
             print(f'Change: {round(pct_change, 1)}%\n')
 
-        sell = input('Would you like to sell? y or n\n')
+        sell = input('Would you like to sell or short? y or n\n')
         if sell.lower() == 'y' or sell.lower() == 'yes':
             sym = input('Which stock would you like to sell? Enter symbol\n')
             self.selling(sym.upper())
@@ -68,7 +68,7 @@ class View_trades:
         self.talk_to_broker(sym)
         del data[sym]
         with open('logs/trades.json', 'w+') as f:
-            json.dump(data, f)
+            json.dump(data, f, indent=4)
 
     def talk_to_broker(self, sym):
         """
@@ -80,7 +80,6 @@ class View_trades:
         from little_john.broker import Broker
         broke = Broker()
         amt = self.data[sym]['invested']
-        amt = int(amt)
         ret = self.find_share_val(sym, amt)
         new_funds = ret + amt
         broke.add_funds(new_funds)
@@ -98,5 +97,9 @@ class View_trades:
         """
         shares = self.data[sym]['shares']
         current = self.quote.client.quote(sym)['c']
-        ttl = (shares * current) - amt
+        if self.data[sym]['typeOfBuy'] == 'buy':
+            ttl = (shares * current) - amt
+        else:
+            ttl = amt - (shares * current)
+
         return round(ttl, 2)

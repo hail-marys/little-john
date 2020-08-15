@@ -2,6 +2,7 @@ import finnhub
 from little_john.broker import Broker
 import sys
 import json
+import config
 
 
 class Manual_trade():
@@ -13,7 +14,7 @@ class Manual_trade():
         """
         holds all the values that we want to right to the JSON file
         """
-        self.client = finnhub.Client(api_key="brqm9efrh5rce3ls8mdg")
+        self.client = finnhub.Client(config.api_key)
         self.symbol = None
         self.company = None
         self.buy_or_trade = None
