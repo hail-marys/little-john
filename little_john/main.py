@@ -1,4 +1,12 @@
+import os
 import sys
+from little_john.view_trades import View_trades
+from little_john.manual_trade import Manual_trade
+import little_john.add_to_target_list as Target_List
+from little_john.broker import Broker
+from little_john.trade_bot import Trade_Bot
+import json
+
 """
 >> python Little_John/main.py
 
@@ -19,28 +27,44 @@ View account balance and trading history
 
 
 def start():
+    Instance_Trade_Bot = Trade_Bot()
+    os.system('clear' if os.name == 'nt' else 'clear')
     run = True
     while run:
-        display_text('$100', 'off')
+        Instance_Broker = Broker()
+        os.system('clear' if os.name == 'nt' else 'clear')
+        display_text(f'{Instance_Broker.balance}', f'{Instance_Trade_Bot.status}')
         ipt = input('> ')
         if ipt == 'quit':
-            sys.exit('thanks for using the app')
-        elif ipt == 1:
-            view_trades.menu()
-        elif ipt == 2:
-            search_stocks.menu()
-        elif ipt == 3:
-            make_trade.menu()
-        elif ipt == 4:
-            autobot.toggle()
-        elif ipt == 5:
-            view_account.menu()
+            os.system('clear' if os.name == 'nt' else 'clear')
+            sys.exit('Thanks for using the app')
+        elif ipt == '1':
+            os.system('clear' if os.name == 'nt' else 'clear')
+            view = View_trades()
+            view.display()
+        elif ipt == '2':
+            # search_stocks.menu()
+            True
+        elif ipt == '3':
+            os.system('clear' if os.name == 'nt' else 'clear')
+            trade = Manual_trade()
+            trade.menu()
+            # display_text(f'{Instance_Broker.balance}', f'{Instance_Trade_Bot.status}')
+        elif ipt == '4':
+            Instance_Trade_Bot.turn_on_or_off()
+            True
+        elif ipt == '5':
+            # view_account.menu()
+            True
+        elif ipt == '6':
+            Target_List.sub_menu()
+            True
         else:
             print('Select correct option')
 
 
 def display_text(balance, bot):
-    print(f'Hello, you have {balance} invested.')
+    print(f'\nHello, you have {balance} invested.')
     print(f'Bot is {bot}')
     print('menu')
     print('1. View current trades')
@@ -48,8 +72,9 @@ def display_text(balance, bot):
     print('3. Make stock trade')
     print('4. Turn on(off) auto trading bot')
     print('5. View account balance and trading history')
+    print('6. Add company to targeted company list')
     print('quit')
-    print('What would you like to do?, Select number')
+    print('What would you like to do?, Select number or type "quit" to exit app')
 
 
 start()
