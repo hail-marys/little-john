@@ -38,6 +38,7 @@ def start():
     while run:
         Instance_Broker = Broker()
         os.system('clear' if os.name == 'nt' else 'clear')
+
         display_text(f'{Instance_Broker.balance}',
                      f'{Instance_Trade_Bot.status}')
         ipt = input('> ')
