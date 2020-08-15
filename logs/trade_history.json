@@ -1,22 +1,12 @@
 {
-  "name":[
-     "Apple",
-     "Tesla"
-  ],
-  "symbol":[
-     "AAPL",
-     "TSLA"
-  ],
-  "amount":[
-    "$5.00",
-    "$1000.00"
-  ],
-  "shares":[
-    "8000",
-    "2300"
-  ],
-  "date_purchased":[
-     "07/29/2020",
-     "11/17/1911"
-  ]
+  "AMZN": {
+    "name": "Amazon.com Inc",
+    "symbol": "AMZN",
+    "typeOfBuy": "buy",
+    "invested": "2000",
+    "shares": 0.6493506493506493,
+    "date_purchased": "07/29/2020"
+  }
 }
+
+
