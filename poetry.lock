@@ -457,6 +457,14 @@ version = "2.6.0"
 
 [[package]]
 category = "main"
+description = "Pure-python FIGlet implementation"
+name = "pyfiglet"
+optional = false
+python-versions = "*"
+version = "0.8.post1"
+
+[[package]]
+category = "main"
 description = "python code static checker"
 name = "pylint"
 optional = false
@@ -768,7 +776,7 @@ python-versions = "*"
 version = "1.12.1"
 
 [metadata]
-content-hash = "3ffd6519c7d79c68a38d77895a5ec0c07ca13fc212bcb18ad4487e7900938f11"
+content-hash = "2ab9d668a99e0676484b8f93f992a298ce3cff8b7a2f354da514e281227c8729"
 lock-version = "1.0"
 python-versions = "^3.8"
 
@@ -1134,6 +1142,10 @@ pyasn1-modules = [
 pycodestyle = [
     {file = "pycodestyle-2.6.0-py2.py3-none-any.whl", hash = "sha256:2295e7b2f6b5bd100585ebcb1f616591b652db8a741695b3d8f5d28bdc934367"},
     {file = "pycodestyle-2.6.0.tar.gz", hash = "sha256:c58a7d2815e0e8d7972bf1803331fb0152f867bd89adf8a01dfd55085434192e"},
+]
+pyfiglet = [
+    {file = "pyfiglet-0.8.post1-py2.py3-none-any.whl", hash = "sha256:d555bcea17fbeaf70eaefa48bb119352487e629c9b56f30f383e2c62dd67a01c"},
+    {file = "pyfiglet-0.8.post1.tar.gz", hash = "sha256:c6c2321755d09267b438ec7b936825a4910fec696292139e664ca8670e103639"},
 ]
 pylint = [
     {file = "pylint-2.5.3-py3-none-any.whl", hash = "sha256:d0ece7d223fe422088b0e8f13fa0a1e8eb745ebffcb8ed53d3e95394b6101a1c"},
