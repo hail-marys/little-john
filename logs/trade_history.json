@@ -22,5 +22,13 @@
         "invested": 500,
         "shares": 1.09,
         "date_purchased": "08/15/2020"
+    },
+    "1597536436": {
+        "name": "Tesla Inc",
+        "symbol": "TSLA",
+        "typeOfBuy": "buy",
+        "invested": 200,
+        "shares": 0.12,
+        "date_purchased": "08/15/2020"
     }
 }

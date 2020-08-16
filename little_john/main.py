@@ -1,3 +1,8 @@
+import os
+import sys
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
 import json
 from little_john.trade_history import View_Trade_History
 from little_john.search_stocks import SearchStocks
@@ -6,11 +11,8 @@ from little_john.broker import Broker
 import little_john.add_to_target_list as Target_List
 from little_john.manual_trade import Manual_trade
 from little_john.view_trades import View_trades
-import os
-import sys
-currentdir = os.path.dirname(os.path.realpath(__file__))
-parentdir = os.path.dirname(currentdir)
-sys.path.append(parentdir)
+import pyfiglet 
+from termcolor import colored, cprint
 
 """
 >> python Little_John/main.py
@@ -74,19 +76,26 @@ def start():
 
 
 def display_text(balance, bot, messages):
-    print(f'\nHello, you have {balance} invested.')
-    print(f'Bot is {bot}')
+    title = pyfiglet.figlet_format('LITTLE JOHN')
+    print(title)
+    balance = colored(balance, 'green')
+    print(f'Hello, you have ${balance} available.')
+    if bot == 'on':
+        bot = colored(bot, 'green')
+    else:
+        bot = colored(bot, 'red')
+    print(f'R2D2 is currently {bot}')
     # blank line, once bot triggers something. My message.
-    print(f'Messages: {messages}')
-    print('MENU')
+    print(f'Messages from R2D2: {messages}\n')
+    cprint("MENU", 'blue', attrs=['bold', 'underline'])
     print('1. View current trades')
     print('2. Search for stocks')
-    print('3. Make stock trade')
-    print('4. Turn on(off) auto trading bot')
+    print('3. Make stock trades')
+    print('4. Turn R2D2 trading bot on(off)')
     print('5. View account balance and trading history')
     print('6. Add company to targeted company list')
-    print('quit')
-    print('What would you like to do?, Select number or type "quit" to exit app')
+    print('quit\n')
+    print('What would you like to do?, Select number or type "quit" to exit app\n')
 
 
 start()

@@ -15,7 +15,13 @@ pytest-watch = "^4.2.0"
 autopep8 = "^1.5.4"
 finnhub-python = "^2.1.0"
 schedule = "^0.6.0"
+<<<<<<< HEAD
 pyfiglet = "^0.8.post1"
+=======
+figlet = "^0.0.1"
+pyfiglet = "^0.8.post1"
+termcolor = "^1.1.0"
+>>>>>>> d473ad5938aea4ebedc562e31a3d5ab3961cadfb
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
