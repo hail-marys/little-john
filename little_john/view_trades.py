@@ -1,4 +1,6 @@
 import json
+import pyfiglet 
+from termcolor import colored, cprint
 
 
 class View_trades:
@@ -26,6 +28,8 @@ class View_trades:
         """
         Display stocks from json file and takes inputs
         """
+        title = pyfiglet.figlet_format('CURRENT TRADES')
+        print(title)
 
         for i in self.data:
             current_price = self.quote.client.quote(str(i))['c']
@@ -38,9 +42,9 @@ class View_trades:
             print(f'Shares: {round(self.data[i]["shares"], 2)}')
             print(f'Change: {round(pct_change, 1)}%\n')
 
-        sell = input('Would you like to sell or short? y or n\n')
+        sell = input('Would you like to Sell or Short? y or n\n')
         if sell.lower() == 'y' or sell.lower() == 'yes':
-            sym = input('Which stock would you like to sell? Enter symbol\n')
+            sym = input('Which stock would you like to Sell? Enter symbol\n')
             self.selling(sym.upper())
         else:
             return

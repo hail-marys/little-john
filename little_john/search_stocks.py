@@ -1,6 +1,8 @@
 import finnhub
 import requests
 import config 
+import pyfiglet 
+from termcolor import colored, cprint
 
 
 class SearchStocks:
@@ -12,7 +14,10 @@ class SearchStocks:
 
     def menu(self):
         """Allows user to enter a company and displays values"""
+        title = pyfiglet.figlet_format('SEARCH FOR STOCKS')
+        print(title)
         entry = input('Which company would you like to search for? Enter symbol:\n').upper() 
+        cprint(entry, 'yellow')
         if self.check(entry):
             self.current_stock_price(entry)
             self.open_stock_price(entry)
@@ -23,7 +28,9 @@ class SearchStocks:
             self.week_low(entry)
             self.pe_ratio(entry)
             self.div_yield(entry)
-            i = input('Press any key to return to the main menu')
+            # print_design = cprint('\nPress any key to return to the main menu', 'white', attrs=['underline'])
+            i = input(cprint('\nPress any key to return to the main menu', 'white', attrs=['underline']))
+            return f'\nPress any key to return to the main menu'
         else:
             print(f'That company symbol does not exist.\n')
             self.menu()
