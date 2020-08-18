@@ -3,7 +3,8 @@ from little_john.broker import Broker
 import sys
 import json
 import config
-
+import pyfiglet 
+from termcolor import colored, cprint
 
 class Manual_trade():
     """
@@ -43,16 +44,18 @@ class Manual_trade():
         """
         Runs inputs one by one and stores the data into class, writes all data to JSON file.
         """
-        company = input('Which Company? Enter symbol:\n').upper()
+        title = pyfiglet.figlet_format('STOCK TRADES')
+        print(title)
+        company = input('Which company would you like to trade? Enter symbol:\n\n').upper()
         self.check(company)
 
-        entry = input('Buy or Short?\n').lower()
+        entry = input('Would you like to Buy or Short?\n\n').lower()
         self.buy(entry)
 
-        amt = input('How much?\n')
+        amt = input('How much would you like to Buy/Short?\n\n')
         self.amount_of(amt)
 
-        confirm = input('Confirm? Enter y or n\n')
+        confirm = input('Are you ABSOLUTELY sure you want to make these trades? Enter y or n\n')
         self.confirmation(confirm)
 
     def process_company(self, comp):

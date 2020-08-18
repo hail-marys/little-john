@@ -1,12 +1,4 @@
 {
-    "MSFT": {
-        "name": "Microsoft Corp",
-        "symbol": "MSFT",
-        "typeOfBuy": "buy",
-        "currentAtPurchase": 208.9,
-        "invested": 900,
-        "shares": 4.32
-    },
     "TSLA": {
         "name": "Tesla Inc",
         "symbol": "TSLA",
@@ -14,5 +6,13 @@
         "currentAtPurchase": 1650.71,
         "invested": 200,
         "shares": 0.12
+    },
+    "AAPL": {
+        "name": "Apple Inc",
+        "symbol": "AAPL",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 458.43,
+        "invested": 100,
+        "shares": 0.22
     }
 }
