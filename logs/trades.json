@@ -1,12 +1,4 @@
 {
-    "TSLA": {
-        "name": "Tesla Inc",
-        "symbol": "TSLA",
-        "typeOfBuy": "buy",
-        "currentAtPurchase": 1650.71,
-        "invested": 200,
-        "shares": 0.12
-    },
     "AAPL": {
         "name": "Apple Inc",
         "symbol": "AAPL",

@@ -22,6 +22,14 @@ class Trade_Bot:
         elif self.status == 'on':
             self.status = 'off'
 
+    def plan_b(self, sym):
+        from statistics import mean
+        from little_john.search_stocks import SearchStocks
+        search = SearchStocks()
+        o = search.candle(sym)
+        v = mean(o['c'])
+        avg_close = round(v, 2)
+
     def trade_algorithm(self, sym=None, open=None, high=None, low=None, eom=None):
 
         while self.status == 'on':
@@ -33,11 +41,23 @@ class Trade_Bot:
             # low = Prediction_algorithm.low()
             # eom = Prediction_algorithm.eom()
             # hr = 3600.0 sec
+            thread = threading.Thread(
+                target=print('TICK'), args=(), daemon=True)
 
-            starttime = time.time()
-            print('TICK')
-            # self.conditional(sym, low, high, eom)
-            time.sleep(30.0 - ((time.time() - starttime) % 60.0))
+            thread.start()
+
+            time.sleep(5)
+            thread.join()
+            # starttime = time.time()
+            # print('TICK')
+            # # self.conditional(sym, low, high, eom)
+            # time.sleep(30.0 - ((time.time() - starttime) % 60.0))
+
+    def open_json(self, file):
+        import json
+        with open(file, 'r+') as f:
+            targets = json.load(f)
+        return targets
 
     def conditional(self, sym, low, high, eom):
         current = int(self.client.quote(sym)['c'])
@@ -45,7 +65,7 @@ class Trade_Bot:
             print('BUYING')
             self.buy_stock(sym, 500)
             self.alert(sym, 500, 'bought')
-        elif current >= high or eom <= .02:
+        elif current >= high or eom <= .02 and current in self.open_json('user_data/target_list.json'):
             print('SELLING')
             self.sell_stock(sym)
             self.alert(sym, 500, 'sold')
@@ -69,11 +89,6 @@ class Trade_Bot:
         print(f'R2D2 {trans} {amt} of {sym} shares')
         self.message = f'R2D2 {trans} {amt} of {sym} shares'
 
-
-trade = Trade_Bot()
-trade.status = 'off'
-
-trade.trade_algorithm()
 
 """
 Method to run the algorithm
