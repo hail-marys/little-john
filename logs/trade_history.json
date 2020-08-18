@@ -46,5 +46,13 @@
         "invested": 800,
         "shares": 200.0,
         "date_purchased": "08/17/2020"
+    },
+    "1597723916": {
+        "name": "Microsoft Corp",
+        "symbol": "MSFT",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 2.38,
+        "date_purchased": "08/17/2020"
     }
 }
