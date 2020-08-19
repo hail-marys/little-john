@@ -32,7 +32,7 @@ View account balance and trading history
 > <select number>
 
 """
-
+I am doing something so we can push then delete later 
 
 def start():
     Instance_Trade_Bot = Trade_Bot()
