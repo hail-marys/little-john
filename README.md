@@ -56,19 +56,19 @@ Unit testing is included in the test file using the pytest test framework.
 ***Below are screen shot images of how our app Little John works***
 
 ### Main Menu
-![Main Menu](assets/Main menu.png)
+![Main Menu](assets/Main_menu.png)
 
 ### Searching for Stocks
-![Process of how to search for stocks](assets/Search for stocks.png)
+![Process of how to search for stocks](assets/Search_for_stocks.png)
 
 ### Trading Stocks
-![Process of how to trade stocks](assets/Stock trades.png)
+![Process of how to trade stocks](assets/Stock_trades.png)
 
 ---
 
 ## Data Flow 
 ***[Add a clean and clear explanation of what the data flow is. Walk me through it.]***
-![Data Flow Diagram](assets/Team Hail Mary Flow Chart.png)
+![Data Flow Diagram](assets/Flow_Chart.png)
 
 ---
 
