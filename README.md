@@ -41,11 +41,11 @@ Clone this repository to your local machine.
 $ git clone https://github.com/hail-marys/little-john
 ```
 Once downloaded, cd into little_john. Activate your virtual environment by running poetry init then poetry shell
-```
+
 The poetry tools will automatically install any dependencies. Before running the application, an API key will be needed from finnhub.io
-```
+
 Once everything is installed run application in terminal: python little_john/main.py
-```
+
 Unit testing is included in the test file using the pytest test framework. 
 
 ---
