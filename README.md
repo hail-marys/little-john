@@ -18,20 +18,18 @@ As a group we created an AI stock market trading bot using python. Customers wil
 VS Code
 
 - Python
-- Django
-- Docker
-- MVC
-- xUnit
-- Bootstrap
-- Azure
+- Finnhub
+- Pyfiglet
+- Termcolor
+- Jupiter Notebook
 - Pytest
 
 ---
 
 ## Recent Updates
 
-#### V 1.4
-*Added OAuth for MySpace* - 23 Jan 2003
+#### V 1.0
+*MVP* - 19 Aug 2020
 
 ---
 
@@ -42,76 +40,32 @@ Clone this repository to your local machine.
 ```
 $ git clone https://github.com/hail-marys/little-john
 ```
-Once downloaded, activate your virtual environment and run by ____________
+Once downloaded, cd into little_john. Activate your virtual environment by running poetry init then poetry shell
 ```
-cd YourRepo/YourProject
-dotnet build
+The poetry tools will automatically install any dependencies. Before running the application, an API key will be needed from finnhub.io
 ```
-The poetry tools will automatically install any dependencies. Before running the application, setup your DB by doing ________
+Once everything is installed run application in terminal: python little_john/main.py
 ```
-Update-Database
-```
-Once the database has been created, the application can be run. Options for running and debugging the application using can be found via your coding tools of ___________. From the command line, the following will start an instance of the Postgresql server to host the application:
-```
-cd YourRepo/YourProject
-dotnet run
-```
-Unit testing is included in the __________________ project using the pytest test framework. Tests have been provided for models, view models, controllers, and utility classes for the application.
+Unit testing is included in the test file using the pytest test framework. 
 
 ---
 
 ## Usage
-***[Provide some images of your app with brief description as title]***
+***Below are screen shot images of how our app Little John works***
 
-### Overview of Recent Posts
-![Overview of Recent Posts](https://via.placeholder.com/500x250)
+### Main Menu
+![Main Menu](assets/Main menu.png)
 
-### Creating a Post
-![Post Creation](https://via.placeholder.com/500x250)
+### Searching for Stocks
+![Process of how to search for stocks](assets/Search for stocks.png)
 
-### Enriching a Post
-![Enriching Post](https://via.placeholder.com/500x250)
-
-### Viewing Post Details
-![Details of Post](https://via.placeholder.com/500x250)
+### Trading Stocks
+![Process of how to trade stocks](assets/Stock trades.png)
 
 ---
 ## Data Flow (Frontend, Backend, REST API)
 ***[Add a clean and clear explanation of what the data flow is. Walk me through it.]***
-![Data Flow Diagram](/assets/img/Flowchart.png)
-
----
-## Data Model
-
-### Overall Project Schema
-***[Add a description of your DB schema. Explain the relationships to me.]***
-![Database Schema](/assets/img/ERD.png)
-
----
-## Model Properties and Requirements
-
-### Blog
-
-| Parameter | Type | Required |
-| --- | --- | --- |
-| ID  | int | YES |
-| Summary | string | YES |
-| Content | string | YES |
-| Tags | string(s) | NO |
-| Picture | img jpeg/png | NO |
-| Sentiment | float | NO |
-| Keywords | string(s) | NO |
-| Related Posts | links | NO |
-| Date | date/time object | YES |
-
-
-### User
-
-| Parameter | Type | Required |
-| --- | --- | --- |
-| ID  | int | YES |
-| Name/Author | string | YES |
-| Posts | list | YES |
+![Data Flow Diagram](assets/Team Hail Mary Flow Chart.png)
 
 ---
 
