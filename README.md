@@ -1,14 +1,16 @@
 # Team Hail Marys
 
 ## Project Little John
+
 ---
+
 ### We presented in terminal on 8/20/2020!
 
 [https://github.com/hail-marys/little-john]
 
 ---
+
 ## Web Application
-***[Explain your app, should be at least a paragraph. What does it do? Why should I use? Sell your product!]***
 
 As a group we created an AI stock market trading bot using python. Customers will be able to log into their account to view current trades and balances through the terminal along with past trading history. Customers will also be able to search for a companies stock price and history by searching either the companies name or symbol. Customers will be able to turn the auto trading bot on and off. 
 
@@ -63,7 +65,8 @@ Unit testing is included in the test file using the pytest test framework.
 ![Process of how to trade stocks](assets/Stock trades.png)
 
 ---
-## Data Flow (Frontend, Backend, REST API)
+
+## Data Flow 
 ***[Add a clean and clear explanation of what the data flow is. Walk me through it.]***
 ![Data Flow Diagram](assets/Team Hail Mary Flow Chart.png)
 
