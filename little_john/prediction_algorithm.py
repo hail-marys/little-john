@@ -48,6 +48,3 @@ def get_prediction(ticker):
     stock_prediction = model.predict(x_test)
     stock_prediction = scaler.inverse_transform(stock_prediction)
     return stock_prediction[0][0]
-
-
-print(get_prediction('AAPL'))
