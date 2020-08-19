@@ -1,5 +1,5 @@
 import json
-import pyfiglet 
+import pyfiglet
 from termcolor import colored, cprint
 
 
@@ -56,10 +56,12 @@ class View_trades:
         Args:
             sym str: The stock symbol
         """
-        if self.data[sym]:
+        if sym in self.data:
             self.delete_json(sym, self.data)
+            i = input(f'{sym} has been sold')
         else:
-            print("DOESN'T EXIST")
+            i = input("Does not exist. Press any key to try again")
+            self.display()
 
     def delete_json(self, sym, data):
         """

@@ -47,28 +47,4 @@
         "shares": 200.0,
         "date_purchased": "08/17/2020"
     },
-    "1597721377": {
-        "name": "Weis Markets Inc",
-        "symbol": "WMK",
-        "typeOfBuy": "buy",
-        "invested": 400,
-        "shares": 7.84,
-        "date_purchased": "08/17/2020"
-    },
-    "1597721462": {
-        "name": "Apple Inc",
-        "symbol": "AAPL",
-        "typeOfBuy": "short",
-        "invested": 100,
-        "shares": 0.22,
-        "date_purchased": "08/17/2020"
-    },
-    "1597795183": {
-        "name": "Apple Inc",
-        "symbol": "AAPL",
-        "typeOfBuy": "buy",
-        "invested": 500,
-        "shares": 1.08,
-        "date_purchased": "08/18/2020"
-    }
 }

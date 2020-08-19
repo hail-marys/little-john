@@ -1,18 +1,19 @@
+import threading
+import pyfiglet
+from termcolor import colored, cprint
+from little_john.view_trades import View_trades
+from little_john.manual_trade import Manual_trade
+import little_john.add_to_target_list as Target_List
+from little_john.broker import Broker
+from little_john.trade_bot import Trade_Bot
+from little_john.search_stocks import SearchStocks
+from little_john.trade_history import View_Trade_History
+import json
 import os
 import sys
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
-import json
-from little_john.trade_history import View_Trade_History
-from little_john.search_stocks import SearchStocks
-from little_john.trade_bot import Trade_Bot
-from little_john.broker import Broker
-import little_john.add_to_target_list as Target_List
-from little_john.manual_trade import Manual_trade
-from little_john.view_trades import View_trades
-import pyfiglet 
-from termcolor import colored, cprint
 
 """
 >> python Little_John/main.py
@@ -63,6 +64,8 @@ def start():
             # display_text(f'{Instance_Broker.balance}', f'{Instance_Trade_Bot.status}')
         elif ipt == '4':
             Instance_Trade_Bot.turn_on_or_off()
+            Instance_Trade_Bot.plan_b()
+
             True
         elif ipt == '5':
             hist = View_Trade_History('logs/trade_history.json')
@@ -98,4 +101,7 @@ def display_text(balance, bot, messages):
     print('What would you like to do?, Select number or type "quit" to exit app\n')
 
 
-start()
+thread = threading.Thread(
+    target=start(), args=(), daemon=True)
+thread.start()
+thread.join()
