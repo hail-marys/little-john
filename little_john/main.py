@@ -32,7 +32,7 @@ View account balance and trading history
 > <select number>
 
 """
-I am doing something so we can push then delete later 
+
 
 def start():
     Instance_Trade_Bot = Trade_Bot()
@@ -64,7 +64,7 @@ def start():
             # display_text(f'{Instance_Broker.balance}', f'{Instance_Trade_Bot.status}')
         elif ipt == '4':
             Instance_Trade_Bot.turn_on_or_off()
-            Instance_Trade_Bot.plan_b()
+            # Instance_Trade_Bot.plan_b()
 
             True
         elif ipt == '5':
@@ -94,7 +94,7 @@ def display_text(balance, bot, messages):
     print('1. View current trades')
     print('2. Search for stocks')
     print('3. Make stock trades')
-    print('4. Turn R2D2 trading bot on(off)')
+    print('4. Turn R2D2 prediction bot on(off)')
     print('5. View trading history')
     print('6. Add company to targeted company list')
     print('quit\n')

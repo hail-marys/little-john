@@ -23,22 +23,22 @@ class Trade_Bot:
         elif self.status == 'on':
             self.status = 'off'
 
-    def plan_b(self):
-        """
-        This is inc ase the prediction algoritm is out.
+    # def plan_b(self):
+    #     """
+    #     This is in case the prediction algorithm is out.
 
-        Args:
-            sym ([str]): [the Symbol to the company]
-        """
-        from statistics import mean
-        from little_john.search_stocks import SearchStocks
+    #     Args:
+    #         sym ([str]): [the Symbol to the company]
+    #     """
+    #     from statistics import mean
+    #     from little_john.search_stocks import SearchStocks
 
-        search = SearchStocks()
-        for i in self.data['companies']:
-            o = search.candle(i)
-            v = mean(o['c'])
-            avg_close = round(v, 2)
-            self.trade_algorithm(i, None, avg_close)
+    #     search = SearchStocks()
+    #     for i in self.data['companies']:
+    #         o = search.candle(i)
+    #         v = mean(o['c'])
+    #         avg_close = round(v, 2)
+    #         self.trade_algorithm(i, None, avg_close)
 
     def trade_algorithm(self, sym=None, op=None, cl=None):
         """
@@ -48,8 +48,9 @@ class Trade_Bot:
             sym ([str], optional): [Symbol of stock]. Defaults to None.
             open ([str], optional): [the open price]. Defaults to None.
         """
-
+        import little_john.prediction_algorithm
         self.conditional(sym, op, cl)
+
 
     def open_json(self, file):
         """
@@ -74,14 +75,14 @@ class Trade_Bot:
             sym ([str]): [symbol]
             op ([str]): [open price]
         """
-        current = int(self.client.quote(sym)['c'])
-        if current <= cl:
+        current = int(self.client.quote(sym)['o'])
+        if current <= op:
             # current <= op or (CONDITIONAL FOR THE PREDICT)
             #  or eom >= .05
             print('BUYING')
             self.buy_stock(sym, 500)
             self.alert(sym, 500, 'bought')
-        elif current >= cl and current in self.open_json('user_data/target_list.json'):
+        elif current >= op and current in self.open_json('user_data/target_list.json'):
             # current >= op or (CONDITIONAL FOR THE PREDICT)
             #  or eom <= .02
             print('SELLING')
