@@ -6,5 +6,13 @@
         "currentAtPurchase": 458.43,
         "invested": 100,
         "shares": 0.22
+    },
+    "CNK": {
+        "name": "Cinemark Holdings Inc",
+        "symbol": "CNK",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 11.04,
+        "invested": 1000,
+        "shares": 90.9
     }
 }

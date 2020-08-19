@@ -13,6 +13,7 @@ class Trade_Bot:
         self.status = 'off'
         self.client = finnhub.Client(config.api_key)
         self.message = 'None'
+        self.data = self.open_json('user_data/target_list.json')
 
     def turn_on_or_off(self):
         """ask if you want to turn bot on or off
@@ -22,50 +23,67 @@ class Trade_Bot:
         elif self.status == 'on':
             self.status = 'off'
 
-    def plan_b(self, sym):
+    def plan_b(self):
+        """
+        This is inc ase the prediction algoritm is out.
+
+        Args:
+            sym ([str]): [the Symbol to the company]
+        """
         from statistics import mean
         from little_john.search_stocks import SearchStocks
+
         search = SearchStocks()
-        o = search.candle(sym)
-        v = mean(o['c'])
-        avg_close = round(v, 2)
+        for i in self.data['companies']:
+            o = search.candle(i)
+            v = mean(o['c'])
+            avg_close = round(v, 2)
+            self.trade_algorithm(i, None, avg_close)
 
-    def trade_algorithm(self, sym=None, open=None, high=None, low=None, eom=None):
+    def trade_algorithm(self, sym=None, op=None, cl=None):
+        """
+        This starts the trade
 
-        while self.status == 'on':
-            import threading
-            # for i in target list:
-            # sym = Prediction_algorithm.sym()
-            # open = Prediction_algorithm.open()
-            # high = Prediction_algorithm.high()
-            # low = Prediction_algorithm.low()
-            # eom = Prediction_algorithm.eom()
-            # hr = 3600.0 sec
-            thread = threading.Thread(
-                target=print('TICK'), args=(), daemon=True)
+        Args:
+            sym ([str], optional): [Symbol of stock]. Defaults to None.
+            open ([str], optional): [the open price]. Defaults to None.
+        """
 
-            thread.start()
-
-            time.sleep(5)
-            thread.join()
-            # starttime = time.time()
-            # print('TICK')
-            # # self.conditional(sym, low, high, eom)
-            # time.sleep(30.0 - ((time.time() - starttime) % 60.0))
+        self.conditional(sym, op, cl)
 
     def open_json(self, file):
+        """
+        Opens JSON file
+
+        Args:
+            file ([str]): [json file path]
+
+        Returns:
+            [dict]: [Dictionary of the json file opened]
+        """
         import json
         with open(file, 'r+') as f:
             targets = json.load(f)
         return targets
 
-    def conditional(self, sym, low, high, eom):
+    def conditional(self, sym, op, cl):
+        """
+        evaluates if stock should be sold or bought.
+
+        Args:
+            sym ([str]): [symbol]
+            op ([str]): [open price]
+        """
         current = int(self.client.quote(sym)['c'])
-        if current <= low or eom >= .05:
+        if current <= cl:
+            # current <= op or (CONDITIONAL FOR THE PREDICT)
+            #  or eom >= .05
             print('BUYING')
             self.buy_stock(sym, 500)
             self.alert(sym, 500, 'bought')
-        elif current >= high or eom <= .02 and current in self.open_json('user_data/target_list.json'):
+        elif current >= cl and current in self.open_json('user_data/target_list.json'):
+            # current >= op or (CONDITIONAL FOR THE PREDICT)
+            #  or eom <= .02
             print('SELLING')
             self.sell_stock(sym)
             self.alert(sym, 500, 'sold')
@@ -73,6 +91,13 @@ class Trade_Bot:
             return
 
     def buy_stock(self, sym, amt):
+        """
+        Calls methods to  run  add.
+
+        Args:
+            sym ([str]): [stock symbol]
+            amt ([int]): [the amount to buy]
+        """
         from little_john.manual_trade import Manual_trade
         trader = Manual_trade()
         trader.check(sym)
@@ -81,39 +106,24 @@ class Trade_Bot:
         trader.confirmation('y')
 
     def sell_stock(self, sym):
+        """
+        Sells the stock
+
+        Args:
+            sym ([sym]): [Stock symbol]
+        """
         from little_john.view_trades import View_trades
         seller = View_trades()
         seller.selling(sym)
 
     def alert(self, sym, amt, trans):
+        """
+        alert what stock was bought
+
+        Args:
+            sym ([type]): [description]
+            amt ([type]): [description]
+            trans ([type]): [description]
+        """
         print(f'R2D2 {trans} {amt} of {sym} shares')
         self.message = f'R2D2 {trans} {amt} of {sym} shares'
-
-
-"""
-Method to run the algorithm
-* Symbol
-* open month
-* high month
-* low month
-* eom month
-
-Condition for when to buy
-    * how much to buy
-    * buy when close to month low
-    * or when eom pct is greater than <value>
-Condition for when to sell
-    * sell when above high or above eom pct for current and at purchase
-    * if exceeds low sell
-invterval check on bought stocks to sell
-    * every hr eval sell
-Live alert on the main pages showing when stocks are bought or sold
-    * when a condition is met return results to main.py
-    * Menu has a message queue
-
-"""
-
-
-# if __name__ == "__main__":
-#     test = Trade_Bot('./trade_history.json')
-#     test.turn_on_or_off()

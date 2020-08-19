@@ -64,7 +64,7 @@ def start():
             # display_text(f'{Instance_Broker.balance}', f'{Instance_Trade_Bot.status}')
         elif ipt == '4':
             Instance_Trade_Bot.turn_on_or_off()
-            Instance_Trade_Bot.trade_algorithm()
+            Instance_Trade_Bot.plan_b()
 
             True
         elif ipt == '5':

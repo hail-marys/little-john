@@ -54,5 +54,21 @@
         "invested": 500,
         "shares": 2.38,
         "date_purchased": "08/17/2020"
+    },
+    "1597808838": {
+        "name": "Cinemark Holdings Inc",
+        "symbol": "CNK",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 45.45,
+        "date_purchased": "08/18/2020"
+    },
+    "1597808912": {
+        "name": "Cinemark Holdings Inc",
+        "symbol": "CNK",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 45.45,
+        "date_purchased": "08/18/2020"
     }
 }
