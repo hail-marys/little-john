@@ -32,7 +32,6 @@ View account balance and trading history
 > <select number>
 
 """
-I am doing something so we can push then delete later 
 
 def start():
     Instance_Trade_Bot = Trade_Bot()
@@ -63,7 +62,7 @@ def start():
             trade.menu()
             # display_text(f'{Instance_Broker.balance}', f'{Instance_Trade_Bot.status}')
         elif ipt == '4':
-            Instance_Trade_Bot.turn_on_or_off()
+            # Instance_Trade_Bot.turn_on_or_off()
             Instance_Trade_Bot.plan_b()
 
             True
@@ -76,6 +75,7 @@ def start():
             True
         else:
             print('Select correct option')
+           
 
 
 def display_text(balance, bot, messages):
