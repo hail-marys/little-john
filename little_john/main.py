@@ -94,7 +94,7 @@ def display_text(balance, bot, messages):
     print('1. View current trades')
     print('2. Search for stocks')
     print('3. Make stock trades')
-    print('4. Turn R2D2 trading bot on(off)')
+    print('4. Turn R2D2 prediction bot on(off)')
     print('5. View trading history')
     print('6. Add company to targeted company list')
     print('quit\n')

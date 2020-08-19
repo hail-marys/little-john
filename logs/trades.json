@@ -19,8 +19,32 @@
         "name": "Cinemark Holdings Inc",
         "symbol": "CNK",
         "typeOfBuy": "buy",
-        "currentAtPurchase": 11.04,
-        "invested": 2000,
-        "shares": 181.8
+        "currentAtPurchase": 11.14,
+        "invested": 4000,
+        "shares": 363.6
+    },
+    "ABBV": {
+        "name": "Abbvie Inc",
+        "symbol": "ABBV",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 96.1,
+        "invested": 500,
+        "shares": 5.21
+    },
+    "ALK": {
+        "name": "Alaska Air Group Inc",
+        "symbol": "ALK",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 35.85,
+        "invested": 500,
+        "shares": 14.29
+    },
+    "TSLA": {
+        "name": "Tesla Inc",
+        "symbol": "TSLA",
+        "typeOfBuy": "short",
+        "currentAtPurchase": 1878.53,
+        "invested": 500,
+        "shares": 0.27
     }
 }
