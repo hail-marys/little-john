@@ -1,1 +1,18 @@
-{"AAPL": {"name": "Apple Inc", "symbol": "AAPL", "typeOfBuy": "buy", "currentAtPurchase": 452.04, "invested": "100", "shares": 0.22123893805309736}, "AMZN": {"name": "Amazon.com Inc", "symbol": "AMZN", "typeOfBuy": "buy", "currentAtPurchase": 3162.24, "invested": "1200", "shares": 0.3795066413662239}}
+{
+    "AAPL": {
+        "name": "Apple Inc",
+        "symbol": "AAPL",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 460.34,
+        "invested": 700,
+        "shares": 1.52
+    },
+    "WMK": {
+        "name": "Weis Markets Inc",
+        "symbol": "WMK",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 51.13,
+        "invested": 400,
+        "shares": 7.84
+    }
+}

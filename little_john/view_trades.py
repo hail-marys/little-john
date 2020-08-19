@@ -1,4 +1,6 @@
 import json
+import pyfiglet
+from termcolor import colored, cprint
 
 
 class View_trades:
@@ -26,6 +28,8 @@ class View_trades:
         """
         Display stocks from json file and takes inputs
         """
+        title = pyfiglet.figlet_format('CURRENT TRADES')
+        print(title)
 
         for i in self.data:
             current_price = self.quote.client.quote(str(i))['c']
@@ -38,9 +42,9 @@ class View_trades:
             print(f'Shares: {round(self.data[i]["shares"], 2)}')
             print(f'Change: {round(pct_change, 1)}%\n')
 
-        sell = input('Would you like to sell? y or n\n')
+        sell = input('Would you like to Sell or Short? y or n\n')
         if sell.lower() == 'y' or sell.lower() == 'yes':
-            sym = input('Which stock would you like to sell? Enter symbol\n')
+            sym = input('Which stock would you like to Sell? Enter symbol\n')
             self.selling(sym.upper())
         else:
             return
@@ -52,10 +56,12 @@ class View_trades:
         Args:
             sym str: The stock symbol
         """
-        if self.data[sym]:
+        if sym in self.data:
             self.delete_json(sym, self.data)
+            i = input(f'{sym} has been sold')
         else:
-            print("DOESN'T EXIST")
+            i = input("Does not exist. Press any key to try again")
+            self.display()
 
     def delete_json(self, sym, data):
         """
@@ -68,7 +74,7 @@ class View_trades:
         self.talk_to_broker(sym)
         del data[sym]
         with open('logs/trades.json', 'w+') as f:
-            json.dump(data, f)
+            json.dump(data, f, indent=4)
 
     def talk_to_broker(self, sym):
         """
@@ -80,7 +86,6 @@ class View_trades:
         from little_john.broker import Broker
         broke = Broker()
         amt = self.data[sym]['invested']
-        amt = int(amt)
         ret = self.find_share_val(sym, amt)
         new_funds = ret + amt
         broke.add_funds(new_funds)
@@ -98,5 +103,9 @@ class View_trades:
         """
         shares = self.data[sym]['shares']
         current = self.quote.client.quote(sym)['c']
-        ttl = (shares * current) - amt
+        if self.data[sym]['typeOfBuy'] == 'buy':
+            ttl = (shares * current) - amt
+        else:
+            ttl = amt - (shares * current)
+
         return round(ttl, 2)

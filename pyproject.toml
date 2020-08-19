@@ -17,6 +17,10 @@ finnhub-python = "^2.1.0"
 mplfinance = "^0.12.7-alpha.0"
 jupyterlab = "^2.2.4"
 sklearn = "^0.0"
+schedule = "^0.6.0"
+figlet = "^0.0.1"
+pyfiglet = "^0.8.post1"
+termcolor = "^1.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

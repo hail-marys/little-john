@@ -1,22 +1,50 @@
 {
-  "name":[
-     "Apple",
-     "Tesla"
-  ],
-  "symbol":[
-     "AAPL",
-     "TSLA"
-  ],
-  "amount":[
-    "$5.00",
-    "$1000.00"
-  ],
-  "shares":[
-    "8000",
-    "2300"
-  ],
-  "date_purchased":[
-     "07/29/2020",
-     "11/17/1911"
-  ]
+    "1597511643": {
+        "name": "Microsoft Corp",
+        "symbol": "MSFT",
+        "typeOfBuy": "buy",
+        "invested": 400,
+        "shares": 1.92,
+        "date_purchased": "08/15/2020"
+    },
+    "1597511669": {
+        "name": "Microsoft Corp",
+        "symbol": "MSFT",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 2.4,
+        "date_purchased": "08/15/2020"
+    },
+    "1597515263": {
+        "name": "Apple Inc",
+        "symbol": "AAPL",
+        "typeOfBuy": "short",
+        "invested": 500,
+        "shares": 1.09,
+        "date_purchased": "08/15/2020"
+    },
+    "1597536436": {
+        "name": "Tesla Inc",
+        "symbol": "TSLA",
+        "typeOfBuy": "buy",
+        "invested": 200,
+        "shares": 0.12,
+        "date_purchased": "08/15/2020"
+    },
+    "1597712756": {
+        "name": "Apple Inc",
+        "symbol": "AAPL",
+        "typeOfBuy": "buy",
+        "invested": 100,
+        "shares": 0.22,
+        "date_purchased": "08/17/2020"
+    },
+    "1597712914": {
+        "name": "Nordic American Tanker Ltd",
+        "symbol": "NAT",
+        "typeOfBuy": "buy",
+        "invested": 800,
+        "shares": 200.0,
+        "date_purchased": "08/17/2020"
+    },
 }
