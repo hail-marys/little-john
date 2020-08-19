@@ -6,6 +6,8 @@
 
 import json
 import os
+import pyfiglet
+from termcolor import colored, cprint
 # from little_john.main import start
 
 import finnhub
@@ -19,10 +21,9 @@ def sub_menu():
     returns user back to main menu which calls this function.
     """
     os.system('clear' if os.name == 'nt' else 'clear')
+    title = pyfiglet.figlet_format('TARGETED COMPANIES LIST')
+    print(title)
     print("""
-Targeted Companies List
------------------------
-
 Would you like to:
 1. View current companies
 2. Add a company
@@ -33,24 +34,24 @@ Would you like to:
     """)
     choice = input('>')
     while choice.isnumeric() == False or int(choice) < 0 or int(choice) > 6:
-        print('\n** Please input a number between 1 and 6 **\n')
+        print('\nPlease input a number between 1 and 6\n')
         choice = input('>')
 
     if int(choice) == 1:
         print(view_companies())
-        input('- Press any key to continue -')
+        input('Press any key to continue')
         os.system('clear' if os.name == 'nt' else 'clear')
         sub_menu()
 
     if int(choice) == 2:
-        print('\nEnter ticker of company to add to list:')
+        print('\nEnter symbol of company to add to list')
         print(add_company_to_targeted_companies(input('>')))
-        input('- Press any key to continue -')
+        input('Press any key to continue')
         os.system('clear' if os.name == 'nt' else 'clear')
         sub_menu()
 
     if int(choice) == 3:
-        print('\nAre you sure you want to add all S&P 500 companies to targeted list? y/n')
+        print('\nAre you sure you want to add all S&P 500 companies to the targeted list? y/n')
         response = input('>')
         while response.lower() != 'y' and response.lower() != 'n':
             print('Please enter y to confirm, or n to go back')
@@ -63,15 +64,15 @@ Would you like to:
             with open('user_data/sp500_companies.json', 'r') as file:
                 for i in json.load(file):
                     add_company_to_targeted_companies(i)
-            print('Success')
-            input('- Press any key to continue -')
+            print('Successfully added all S&P 500 companies.')
+            input('Press any key to continue')
             os.system('clear' if os.name == 'nt' else 'clear')
             sub_menu()
 
     if int(choice) == 4:
-        print('\nEnter ticker of the company to remove from targeted list')
+        print('\nEnter company symbol to remove from targeted list')
         print(remove_company_from_targeted_companies(input('>')))
-        input('- Press any key to continue -')
+        input('Press any key to continue')
         os.system('clear' if os.name == 'nt' else 'clear')
         sub_menu()
 
@@ -89,7 +90,7 @@ Would you like to:
                 for i in json.load(file):
                     remove_company_from_targeted_companies(i)
             print('Targeted companies list was cleared')
-            input('- Press any key to continue -')
+            input('Press any key to continue')
             os.system('clear' if os.name == 'nt' else 'clear')
             sub_menu()
 
@@ -117,7 +118,7 @@ def add_company_to_targeted_companies(company):
             file.write(json.dumps(target))
             return f'Successfully added {company} to list.'
     else:
-        return f'{company} does not match a company. Please check spelling.'
+        return f'{company} symbol does not match a company, please try again.'
 
 
 def remove_company_from_targeted_companies(company):
@@ -139,7 +140,7 @@ def remove_company_from_targeted_companies(company):
             file.write(json.dumps(target))
             return f'Successfully removed {company} from list.'
     else:
-        return f'{company} does not match a company. Please check spelling.'
+        return f'{company} symbol does not match a company, please try again.'
 
 
 def is_real_company(ticker):

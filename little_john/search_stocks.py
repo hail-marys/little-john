@@ -1,6 +1,7 @@
 
 import finnhub
 import requests
+import os
 import config
 import pyfiglet
 from termcolor import colored, cprint
@@ -14,6 +15,7 @@ class SearchStocks:
 
     def menu(self):
         """Allows user to enter a company and displays values"""
+        os.system('clear' if os.name == 'nt' else 'clear')
         title = pyfiglet.figlet_format('SEARCH FOR STOCKS')
         print(title)
         entry = input(
