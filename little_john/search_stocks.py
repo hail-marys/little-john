@@ -29,11 +29,7 @@ class SearchStocks:
             self.week_low(entry)
             self.pe_ratio(entry)
             self.div_yield(entry)
-            # print_design = cprint('\nPress any key to return to the main menu', 'white', attrs=['underline'])
-            i = input(cprint('\nPress any key to return to the main menu',
-                             'white', attrs=['underline']))
-            # print(f'\nPress any key to return to the main menu')
-
+            i = input('\nPress any key to return to the main menu')
         else:
             print(f'That company symbol does not exist.\n')
             self.menu()
