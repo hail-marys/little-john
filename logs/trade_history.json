@@ -78,5 +78,93 @@
         "invested": 500,
         "shares": 14.71,
         "date_purchased": "08/19/2020"
+    },
+    "1597891716": {
+        "name": "Cinemark Holdings Inc",
+        "symbol": "CNK",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 45.45,
+        "date_purchased": "08/19/2020"
+    },
+    "1597891764": {
+        "name": "Cinemark Holdings Inc",
+        "symbol": "CNK",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 45.45,
+        "date_purchased": "08/19/2020"
+    },
+    "1597891768": {
+        "name": "United Airlines Holdings Inc",
+        "symbol": "UAL",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 14.71,
+        "date_purchased": "08/19/2020"
+    },
+    "1597891788": {
+        "name": "Cinemark Holdings Inc",
+        "symbol": "CNK",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 45.45,
+        "date_purchased": "08/19/2020"
+    },
+    "1597893267": {
+        "name": "Cinemark Holdings Inc",
+        "symbol": "CNK",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 45.45,
+        "date_purchased": "08/19/2020"
+    },
+    "1597893272": {
+        "name": "United Airlines Holdings Inc",
+        "symbol": "UAL",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 14.71,
+        "date_purchased": "08/19/2020"
+    },
+    "1597893325": {
+        "name": "Cinemark Holdings Inc",
+        "symbol": "CNK",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 45.45,
+        "date_purchased": "08/19/2020"
+    },
+    "1597893893": {
+        "name": "Microsoft Corp",
+        "symbol": "MSFT",
+        "typeOfBuy": "buy",
+        "invested": 600,
+        "shares": 2.87,
+        "date_purchased": "08/19/2020"
+    },
+    "1597894635": {
+        "name": "Cinemark Holdings Inc",
+        "symbol": "CNK",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 45.45,
+        "date_purchased": "08/19/2020"
+    },
+    "1597894640": {
+        "name": "United Airlines Holdings Inc",
+        "symbol": "UAL",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 14.71,
+        "date_purchased": "08/19/2020"
+    },
+    "1597895791": {
+        "name": "Apple Inc",
+        "symbol": "AAPL",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 1.08,
+        "date_purchased": "08/19/2020"
     }
 }
