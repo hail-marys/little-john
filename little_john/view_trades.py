@@ -42,7 +42,7 @@ class View_trades:
             print(f'Shares: {round(self.data[i]["shares"], 2)}')
             print(f'Change: {round(pct_change, 1)}%\n')
 
-        sell = input('Would you like to Sell or Short? y or n\n')
+        sell = input('Would you like to Sell? y or n\n')
         if sell.lower() == 'y' or sell.lower() == 'yes':
             sym = input('Which stock would you like to Sell? Enter symbol\n')
             self.selling(sym.upper())
