@@ -25,8 +25,8 @@ def start():
         Instance_Broker = Broker()
         os.system('clear' if os.name == 'nt' else 'clear')
 
-        display_text(f'{Instance_Broker.balance}',
-                    f'{Instance_Trade_Bot.status}', messages='None')
+        display_text(Instance_Broker.balance,
+                    Instance_Trade_Bot.status, messages='None')
         ipt = input('> ').lower()
         if ipt == 'quit':
             os.system('clear' if os.name == 'nt' else 'clear')
@@ -62,6 +62,7 @@ def start():
 def display_text(balance, bot, messages):
     title = pyfiglet.figlet_format('LITTLE JOHN')
     print(title)
+    balance = round(balance, 2)
     balance = colored(balance, 'green')
     print(f'Hello, you have ${balance} available.')
     if bot == 'on':
