@@ -1,3 +1,8 @@
+import os
+import sys
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
 import threading
 import pyfiglet
 from termcolor import colored, cprint
@@ -9,29 +14,6 @@ from little_john.trade_bot import Trade_Bot
 from little_john.search_stocks import SearchStocks
 from little_john.trade_history import View_Trade_History
 import json
-import os
-import sys
-currentdir = os.path.dirname(os.path.realpath(__file__))
-parentdir = os.path.dirname(currentdir)
-sys.path.append(parentdir)
-
-"""
->> python Little_John/main.py
-
-Hello, you have {balance} invested.
-Bot is {on | off}
-
-Menu
-View current trades
-Search for stocks
-Make stock trade
-Turn on(off) auto trading bot
-View account balance and trading history
-.
- What would you like to do?
-> <select number>
-
-"""
 
 
 def start():
@@ -44,7 +26,7 @@ def start():
         os.system('clear' if os.name == 'nt' else 'clear')
 
         display_text(f'{Instance_Broker.balance}',
-                     f'{Instance_Trade_Bot.status}', messages='None')
+                    f'{Instance_Trade_Bot.status}', messages='None')
         ipt = input('> ').lower()
         if ipt == 'quit':
             os.system('clear' if os.name == 'nt' else 'clear')
@@ -65,7 +47,6 @@ def start():
         elif ipt == '4':
             Instance_Trade_Bot.turn_on_or_off()
             Instance_Trade_Bot.plan_b()
-
             True
         elif ipt == '5':
             hist = View_Trade_History('logs/trade_history.json')
@@ -89,7 +70,6 @@ def display_text(balance, bot, messages):
         bot = colored(bot, 'red')
     print(f'R2D2 is currently {bot}')
     # blank line, once bot triggers something. My message.
-    print(f'Messages from R2D2: {messages}\n')
     cprint('MENU', 'blue', attrs=['bold', 'underline'])
     print('1. View current trades')
     print('2. Search for stocks')

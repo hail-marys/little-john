@@ -46,5 +46,37 @@
         "invested": 500,
         "shares": 14.71,
         "date_purchased": "08/19/2020"
+    },
+    "1597891309": {
+        "name": "Cinemark Holdings Inc",
+        "symbol": "CNK",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 45.45,
+        "date_purchased": "08/19/2020"
+    },
+    "1597891316": {
+        "name": "United Airlines Holdings Inc",
+        "symbol": "UAL",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 14.71,
+        "date_purchased": "08/19/2020"
+    },
+    "1597891362": {
+        "name": "Cinemark Holdings Inc",
+        "symbol": "CNK",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 45.45,
+        "date_purchased": "08/19/2020"
+    },
+    "1597891366": {
+        "name": "United Airlines Holdings Inc",
+        "symbol": "UAL",
+        "typeOfBuy": "buy",
+        "invested": 500,
+        "shares": 14.71,
+        "date_purchased": "08/19/2020"
     }
 }

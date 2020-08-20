@@ -20,8 +20,8 @@
         "symbol": "CNK",
         "typeOfBuy": "buy",
         "currentAtPurchase": 11.14,
-        "invested": 9500,
-        "shares": 863.55
+        "invested": 10500,
+        "shares": 954.45
     },
     "ABBV": {
         "name": "Abbvie Inc",
@@ -52,7 +52,7 @@
         "symbol": "UAL",
         "typeOfBuy": "buy",
         "currentAtPurchase": 34.44,
-        "invested": 500,
-        "shares": 14.71
+        "invested": 1500,
+        "shares": 44.13
     }
 }

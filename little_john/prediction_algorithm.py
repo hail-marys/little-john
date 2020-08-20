@@ -8,11 +8,12 @@ from tensorflow.keras.models import load_model
 import tensorflow.keras as keras
 import tensorflow as tf
 import finnhub
+import config
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
-client = finnhub.Client(api_key='brqm9efrh5rce3ls8mdg')
+client = finnhub.Client(config.api_key)
 
 
 def get_candlestick_data(ticker, timeframe, start, end):
