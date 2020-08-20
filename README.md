@@ -67,17 +67,15 @@ Unit testing is included in the test file using the pytest test framework.
 ---
 
 ## Data Flow 
-***[Add a clean and clear explanation of what the data flow is. Walk me through it.]***
 ![Data Flow Diagram](assets/Flow_Chart.png)
 
 ---
 
 ## Change Log
-***[The change log will list any changes made to the code base. This includes any changes from TA/Instructor feedback]***
-1.4: *Added OAuth for MySpace* - 23 Jan 2003
-1.3: *Changed email handler to Alta Vista, fixed issue with styling on Netscape Navigator browser.* - 21 Dec 1999
-1.2: *Fixed bug where pages would not load due to temp data* - 16 Jun 1998
-1.1: *Added ability for user to change photos on a post* - 12 May 1998
+1.3: *Started AI bot algorithm and set up* - 13 Aug 2020
+1.2: *Added main menu, all related .py files, and JSON files* - 13 Aug 2020
+1.1: *Had to pivot from MetaTrader 5 to Finnhub API* - 08 Aug 2020
+1.0: *Finished all pre-work for project* - 06 Aug 2020
 
 ---
 
