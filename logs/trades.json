@@ -1,0 +1,58 @@
+{
+    "AAPL": {
+        "name": "Apple Inc",
+        "symbol": "AAPL",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 460.34,
+        "invested": 700,
+        "shares": 1.52
+    },
+    "WMK": {
+        "name": "Weis Markets Inc",
+        "symbol": "WMK",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 51.13,
+        "invested": 400,
+        "shares": 7.84
+    },
+    "CNK": {
+        "name": "Cinemark Holdings Inc",
+        "symbol": "CNK",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 11.14,
+        "invested": 10500,
+        "shares": 954.45
+    },
+    "ABBV": {
+        "name": "Abbvie Inc",
+        "symbol": "ABBV",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 96.1,
+        "invested": 500,
+        "shares": 5.21
+    },
+    "ALK": {
+        "name": "Alaska Air Group Inc",
+        "symbol": "ALK",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 35.85,
+        "invested": 500,
+        "shares": 14.29
+    },
+    "TSLA": {
+        "name": "Tesla Inc",
+        "symbol": "TSLA",
+        "typeOfBuy": "short",
+        "currentAtPurchase": 1878.53,
+        "invested": 500,
+        "shares": 0.27
+    },
+    "UAL": {
+        "name": "United Airlines Holdings Inc",
+        "symbol": "UAL",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 34.44,
+        "invested": 1500,
+        "shares": 44.13
+    }
+}
