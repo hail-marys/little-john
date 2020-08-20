@@ -3,6 +3,8 @@ import finnhub
 import config
 import schedule
 import time
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
 class Trade_Bot:
@@ -25,20 +27,21 @@ class Trade_Bot:
 
     def plan_b(self):
         """
-        This is inc ase the prediction algoritm is out.
+        This is in case the prediction algorithm is out.
 
         Args:
             sym ([str]): [the Symbol to the company]
         """
         from statistics import mean
         from little_john.search_stocks import SearchStocks
-
+        import little_john.prediction_algorithm as pd
         search = SearchStocks()
         for i in self.data['companies']:
             o = search.candle(i)
             v = mean(o['c'])
             avg_close = round(v, 2)
-            self.trade_algorithm(i, None, avg_close)
+            trg = pd.get_prediction(i)
+            self.trade_algorithm(i, trg, avg_close)
 
     def trade_algorithm(self, sym=None, op=None, cl=None):
         """
@@ -48,7 +51,6 @@ class Trade_Bot:
             sym ([str], optional): [Symbol of stock]. Defaults to None.
             open ([str], optional): [the open price]. Defaults to None.
         """
-
         self.conditional(sym, op, cl)
 
     def open_json(self, file):
@@ -74,15 +76,17 @@ class Trade_Bot:
             sym ([str]): [symbol]
             op ([str]): [open price]
         """
+
         current = int(self.client.quote(sym)['c'])
-        if current <= cl:
-            # current <= op or (CONDITIONAL FOR THE PREDICT)
+        # print(current)
+        if current <= op:
+            # or current <= cl(CONDITIONAL FOR THE PREDICT)
             #  or eom >= .05
             print('BUYING')
             self.buy_stock(sym, 500)
             self.alert(sym, 500, 'bought')
-        elif current >= cl and current in self.open_json('user_data/target_list.json'):
-            # current >= op or (CONDITIONAL FOR THE PREDICT)
+        elif current >= op and current in self.open_json('user_data/target_list.json'):
+            # or current >= cl (CONDITIONAL FOR THE PREDICT)
             #  or eom <= .02
             print('SELLING')
             self.sell_stock(sym)
@@ -127,3 +131,8 @@ class Trade_Bot:
         """
         print(f'R2D2 {trans} {amt} of {sym} shares')
         self.message = f'R2D2 {trans} {amt} of {sym} shares'
+
+
+# bot = Trade_Bot()
+
+# bot.trade_algorithm()

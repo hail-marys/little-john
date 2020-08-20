@@ -20,8 +20,8 @@
         "symbol": "CNK",
         "typeOfBuy": "buy",
         "currentAtPurchase": 11.14,
-        "invested": 4000,
-        "shares": 363.6
+        "invested": 9500,
+        "shares": 863.55
     },
     "ABBV": {
         "name": "Abbvie Inc",
@@ -46,5 +46,13 @@
         "currentAtPurchase": 1878.53,
         "invested": 500,
         "shares": 0.27
+    },
+    "UAL": {
+        "name": "United Airlines Holdings Inc",
+        "symbol": "UAL",
+        "typeOfBuy": "buy",
+        "currentAtPurchase": 34.44,
+        "invested": 500,
+        "shares": 14.71
     }
 }
