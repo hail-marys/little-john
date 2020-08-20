@@ -33,6 +33,7 @@ View account balance and trading history
 
 """
 
+
 def start():
     Instance_Trade_Bot = Trade_Bot()
     os.system('clear' if os.name == 'nt' else 'clear')
@@ -62,7 +63,7 @@ def start():
             trade.menu()
             # display_text(f'{Instance_Broker.balance}', f'{Instance_Trade_Bot.status}')
         elif ipt == '4':
-            # Instance_Trade_Bot.turn_on_or_off()
+            Instance_Trade_Bot.turn_on_or_off()
             Instance_Trade_Bot.plan_b()
 
             True
@@ -75,7 +76,6 @@ def start():
             True
         else:
             print('Select correct option')
-           
 
 
 def display_text(balance, bot, messages):
