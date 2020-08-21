@@ -72,10 +72,12 @@ Unit testing is included in the test file using the pytest test framework.
 ---
 
 ## Change Log
-1.3: *Started AI bot algorithm and set up* - 13 Aug 2020
-1.2: *Added main menu, all related .py files, and JSON files* - 13 Aug 2020
-1.1: *Had to pivot from MetaTrader 5 to Finnhub API* - 08 Aug 2020
-1.0: *Finished all pre-work for project* - 06 Aug 2020
+- 1.5: *Fixed minor bugs, finished application* - 19 Aug 2020
+- 1.4: *Connected prediction algorithm to trading bot* - 18 Aug 2020
+- 1.3: *Started AI bot algorithm and set up* - 13 Aug 2020
+- 1.2: *Added main menu, all related .py files, and JSON files* - 13 Aug 2020
+- 1.1: *Had to pivot from MetaTrader 5 to Finnhub API* - 08 Aug 2020
+- 1.0: *Finished all pre-work for project* - 06 Aug 2020
 
 ---
 
